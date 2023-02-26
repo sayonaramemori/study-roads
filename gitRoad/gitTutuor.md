@@ -57,3 +57,24 @@ git commit --amend
 //上面三条指令最终只是产生一个提交，第二个提交修正了第一个提交的内容
 ```
 
+## 取消暂存
+```
+git reset HEAD FILES
+```
+
+## 远程库
+```
+git remote -v //查看远程库和对应地址
+git remote //查看远程库名
+git remote add NAME [URL] //添加一个远程库，并命名为NAMA
+git remote show [remote-name]
+git remote rename [old-name] [new-name] //修改远程仓库的本地名
+git remote rm [remote-name] //删除远程库，即本地不再保存相关远程库的信息
+
+```
+## 远程库操作
+```
+git fetch [remote-name] //将远程库的数据拉取到本地，但不自动合并到当前的工作分支
+git push [remote-name] [branch-name] //只有在所克隆的服务器上有写权限，这条指令才会如期执行
+```
+
