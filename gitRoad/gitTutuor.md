@@ -12,6 +12,8 @@ git config --global user.email YOUREMAIL
 ## 查看配置信息
 ```
 git config --list
+git config --global alias.[your-instruction-name] [instruction-name] //给指令取短名
+//example: git config --global alias.unstage 'reset HEAD' 
 ```
 
 ## 获得帮助
