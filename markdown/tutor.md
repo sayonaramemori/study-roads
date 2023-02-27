@@ -75,8 +75,10 @@ __________
 方式一： [链接文字](链接地址)
 方式二： 在文末定义好引用——[链接文字]:链接地址，然后直接用[链接文字]引用即可
 ```
-[Github](https://github.com/)  
-[github-by-reference]  
-[github-by-reference]: https://github.com/
+[Github](https://github.com/) is a good site.  
+[github-by-reference] is a good site.
+
+[github-by-reference]:
+https://github.com/
 
 ----
