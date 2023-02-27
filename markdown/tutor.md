@@ -101,6 +101,13 @@ test
 #### 引用
 `> + 引用内容`
 > QUOTE
->> quote
+>> quote  
 > *incline quote*
 
+
+#### 表格
+```
+|colume1|colume2|colume3|
+|----|----|---|
+|content1|conten2|content3|
+```
