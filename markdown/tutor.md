@@ -93,5 +93,13 @@ Github is <https://github.com/>
 
 #### 行内代码和代码块
 This is a command `gcc C_FILE -o OUTPUT` to compile a C FILE.
+```shell
+$ echo "test"
+test
+```
 
+#### 引用
+`> + 引用内容`
+> QUOTE
+>> quote
 
