@@ -77,6 +77,6 @@ __________
 ```
 [Github](https://github.com/)  
 [github-by-reference]  
-[github-by-reference]:https://github.com/
+[github-by-reference]: https://github.com/
 
 ----
