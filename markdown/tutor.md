@@ -82,3 +82,16 @@ __________
 https://github.com/
 
 ----
+
+#### 网址链接
+```
+<https...>
+```
+Github is <https://github.com/>
+
+----
+
+#### 行内代码和代码块
+This is a command `gcc C_FILE -o OUTPUT` to compile a C FILE.
+
+
