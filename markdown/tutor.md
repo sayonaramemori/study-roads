@@ -48,4 +48,15 @@ TAB+列表二
 2. list one content two
 	1. list three content one
 		1. list four content one
+	2. list three content two
+
+---
+
+#### 分割线
+```
+使用三个以上的-/_/* 来标记，中间可以有空格，但不能有其他字符
+```
+----------
+*********
+__________
 
