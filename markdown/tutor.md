@@ -106,8 +106,6 @@ test
 
 
 #### 表格
-```
 |colume1|colume2|colume3|
 |----|----|---|
 |content1|conten2|content3|
-```
