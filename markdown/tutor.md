@@ -14,7 +14,7 @@
 *THIS IS INCLINE*
 
 #### 粗斜体
-**_THIS IS BOLD INCLINE_**
+*__THIS IS BOLD INCLINE__*
 -------
 
 #### 段落与换行
