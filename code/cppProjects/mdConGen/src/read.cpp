@@ -56,8 +56,13 @@ std::string read::getTab(int nu)
 
 void read::pure()
 {
+	int last = 0;
+	int curlevel = 0;
 	for(auto begin=res.begin(),end=res.end();begin!=end;++begin)
 	{
+		curlevel=rank[begin->level];
+		if((curlevel - last)>1)rank[begin->level] = last + 1;
+
 		std::string head = getTab(rank[begin->level]) + UNORD + SPACE;
 		std::string body = LEFT + begin->content + RIGHT;
 		std::string tail = LEFT_S;
@@ -65,8 +70,6 @@ void read::pure()
 		std::string newline = head + body + tail + '\n';
 		this->contentTable.append(newline);
 	}
-	
-		
 }
 
 void read::generate(int type)
