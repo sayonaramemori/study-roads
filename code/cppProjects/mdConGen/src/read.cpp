@@ -58,7 +58,7 @@ void read::pure()
 {
 	for(auto begin=res.begin(),end=res.end();begin!=end;++begin)
 	{
-		std::string head = getTab(rank[begin->level]) + UNORD;
+		std::string head = getTab(rank[begin->level]) + UNORD + SPACE;
 		std::string body = LEFT + begin->content + RIGHT;
 		std::string tail = LEFT_S;
 		tail += START + begin->content + RIGHT_S;
