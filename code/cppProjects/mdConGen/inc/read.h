@@ -16,13 +16,14 @@ private:
     int checkFront(const std::string& temp);
 	void push(const std::string& temp);
 	std::string getTab(int nu);
-	void pure();
+	void plain();
+	void withTab();
+	void withNumber();
 	void print();
 	void generate(int type);
 	void insert(int);
 	std::map<int,int> rank;
 	void getRank();
-	void withNumber();
 	std::ifstream ifs;
 	bool state=true;
 	typedef struct

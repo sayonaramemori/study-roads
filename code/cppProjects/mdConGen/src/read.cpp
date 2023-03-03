@@ -9,21 +9,23 @@
 #define CODEBLO "```"
 #define START '#'
 #include "read.h"
-#define WITHNU 1
-#define WITHTAB 2
-#define PURE 3
-#define UNORD '-'
+#define UNORD "-"
 #define RIGHT ']'
 #define LEFT '['
+
+#define WITHNU 1
+#define WITHTAB 2
+#define PLAIN 3
+
 namespace claris{
 
 read::read(const std::string& name)
 {
 	ifs.open(name);
 	if(state = ifs.is_open())getAllLine();
-	generate(PURE);
-	print();
+	generate(PLAIN);
 	insert(0);
+	print();
 }
 
 int read::checkFront(const std::string& temp)
@@ -47,6 +49,7 @@ void read::getRank()
 	}
 }
 
+
 std::string read::getTab(int nu)
 {
 	std::string temp;
@@ -54,7 +57,28 @@ std::string read::getTab(int nu)
 	return temp;
 }
 
-void read::pure()
+void read::plain()
+{
+	for(auto begin=res.begin(),end=res.end();begin!=end;++begin)
+	{
+		std::string head = UNORD;
+		head += SPACE;
+		std::string body = LEFT + begin->content + RIGHT;
+		std::string tail = LEFT_S;
+		tail += START + begin->content + RIGHT_S;
+		std::string newline = head + body + tail + '\n';
+		this->contentTable.append(newline);
+	}
+
+}
+
+void read::withNumber()
+{
+	
+}
+
+
+void read::withTab()
 {
 	int last = 0;
 	int curlevel = 0;
@@ -78,11 +102,13 @@ void read::generate(int type)
 	switch(type)
 	{
 		case WITHNU:
+			withNumber();
 			break;	
 		case WITHTAB:
+			withTab();
 			break;	
-		case PURE:
-			pure();
+		case PLAIN:
+			plain();
 			break;
 	}
 }
