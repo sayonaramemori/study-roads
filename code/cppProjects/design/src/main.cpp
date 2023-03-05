@@ -1,5 +1,5 @@
 #include<iostream>
-#include<head.h>
+#include "head.h"
 
 int main(){
 	std::cout<<"Hello world"<<std::endl;

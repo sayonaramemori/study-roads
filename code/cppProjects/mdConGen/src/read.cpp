@@ -39,7 +39,7 @@ void read::getRank()
 	std::set<int> temp;
 	for(auto begin=res.begin(),end=res.end();begin!=end;++begin)
 	{
-		temp.insert(begin->level);	
+		temp.insert(begin->level);
 	}
 	int index = 0;
 	for(auto begin=temp.begin(),end=temp.end();begin!=end;++begin)
@@ -142,7 +142,7 @@ void read::push(const std::string& temp)
 	auto index = temp.find_first_not_of(SPACE,pos);
 	if(index==std::string::npos)
 		data.content = temp.substr(pos);
-	else	
+	else
 		data.content = temp.substr(index);
 
 	this->res.push_back(data);
@@ -173,7 +173,7 @@ void read::getAllLine()
 			}
 		}else
 		{
-			if(mark)continue;	
+			if(mark)continue;
 			else this->push(line);
 		}
 	}
