@@ -60,11 +60,12 @@ void read::getRank()
 	}
     //fix the rank
 	int last = 0;
-	int curlevel = 0;
+	int curRank = 0;
 	for(auto begin=res.begin(),end=res.end();begin!=end;++begin)
 	{
-		curlevel=rank[begin->level];
-		if((curlevel - last)>1)rank[begin->level] = last + 1;
+		curRank=rank[begin->level];
+		if((curRank - last)>1)rank[begin->level] = last + 1;
+        last = curRank;
     }
 
 #ifdef DBG
@@ -159,6 +160,7 @@ std::string read::getNumber(int* arr, int level)
     }
     res += std::to_string(arr[level]);
     if(res.size()==1)res += POINT;
+    else res += SPACE;
     return res; 
 }
 
