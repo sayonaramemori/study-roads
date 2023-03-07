@@ -9,6 +9,8 @@ class read
 {
 public:
 	read(const std::string& name);
+    void work();
+	void print();
 private:
 	typedef struct
 	{
@@ -24,7 +26,6 @@ private:
 	void getAllLine();
     int checkFront(const std::string& temp);
 	void push(const std::string& temp);
-	void print();
 	void generate(int type);
 	void insert(int);
 	void getRank();

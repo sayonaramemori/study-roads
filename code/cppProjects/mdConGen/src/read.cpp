@@ -28,11 +28,23 @@ namespace claris{
 read::read(const std::string& name)
 {
 	ifs.open(name);
-	if(state = ifs.is_open())getAllLine();
-	generate(WITHNU);
-	insert(0);
-	print();
+    state = ifs.is_open();
+    if(!state)
+    {
+        std::cout<<"error:File not exists"<<std::endl;
+    }
 }
+
+void read::work()
+{
+    if(state)
+    {
+        getAllLine();
+		generate(WITHNU);
+		insert(0);
+    }
+}
+
 
 
 //check the line front
