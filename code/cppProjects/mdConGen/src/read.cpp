@@ -119,7 +119,7 @@ void read::getContent(int type)
         case WITHTAB:
 		for(auto begin=res.begin(),end=res.end();begin!=end;++begin)
         {
-            head = getHead(begin->level);
+            head = getHead(rank[begin->level]);
             body = getBody(begin);
             tail = getTail(begin->content);
             newline = head + body + tail + NL;
@@ -129,7 +129,7 @@ void read::getContent(int type)
         case WITHNU:
 		for(auto begin=res.begin(),end=res.end();begin!=end;++begin)
         {
-            head = getHead(begin->level);
+            head = getHead(rank[begin->level]);
             body = getBody(begin,rankMaxNu);
             tail = getTail(begin->content);
             newline = head + body + tail + NL;
