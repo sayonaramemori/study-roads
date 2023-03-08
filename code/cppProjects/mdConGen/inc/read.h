@@ -10,8 +10,9 @@ class read
 public:
 	read(const std::string& name);
     read(const std::string& name, const std::string& dest);
-    void work();
+    read(const std::string& name, const std::string& dest,const std::string& type);
 	void print();
+    void work();
 private:
 	typedef struct
 	{
@@ -28,7 +29,7 @@ private:
     int checkFront(const std::string& temp);
 	void push(const std::string& temp);
 	void generate(int type);
-	void insert(int);
+	void insert(int linePos);
 	void getRank();
     void initRankMax(int*);
     void getContent(int type);
@@ -38,6 +39,7 @@ private:
 	std::string article;
     std::string dest;
 	std::ifstream ifs;
+    int type;
 	bool state=true;
 	std::vector<dataUnit> res;
 };

@@ -33,7 +33,9 @@ read::read(const std::string& name)
     {
         std::cout<<"error:File not exists"<<std::endl;
     }
+    //default set name and model
     this->dest = "CopyVersion_" + name;
+    this->type = PLAIN;
 }
 
 read::read(const std::string& name, const std::string& dest):read(name)
@@ -42,12 +44,39 @@ read::read(const std::string& name, const std::string& dest):read(name)
     this->dest = dest;
 }
 
+read::read(const std::string& name, const std::string& dest,const std::string& type):read(name,dest)
+{
+    if(type=="-p")
+    {
+        //do nothing
+        this->type = PLAIN;
+    }
+    else
+    {
+        if(type=="-t")
+        {
+            this->type = WITHTAB;
+        }
+        else
+        {
+            if(type=="-n")
+            {
+                this->type = WITHNU;
+            }
+            else
+            {
+                std::cout<<"No such type,please enter -p -t -n to specify the style,default -p"<<std::endl;
+            }
+        }
+    }
+}
+
 void read::work()
 {
     if(state)
     {
         getAllLine();
-		generate(WITHNU);
+		generate(this->type);
 		insert(0);
     }
 }
@@ -130,7 +159,7 @@ void read::getContent(int type)
         case PLAIN:
 		for(auto begin=res.begin(),end=res.end();begin!=end;++begin)
         {
-            body = getBody(begin,rankMaxNu);
+            body = getBody(begin);
             tail = getTail(begin->content);
             newline = body + tail + NL;
             this->contentTable.append(newline);
@@ -155,7 +184,7 @@ void read::getContent(int type)
             newline = head + body + tail + NL;
             this->contentTable.append(newline);
         }
-            break;
+        break;
     }
 }
 
