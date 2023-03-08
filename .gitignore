@@ -1,3 +1,2 @@
-*.[oa]
-
-./code/cppProjects/mdConGen/obj
+**/*.[oa]
+**/main
