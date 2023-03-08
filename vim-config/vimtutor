@@ -149,11 +149,13 @@ my lovers:
 	vs          vertical split.
 	To move     to the start of the line use a zero:  0
     .           to repeat the last MODIFY operation.
-    >           move a tab
+    >>           move a tab
     Ctrl-O      jump back (older)
     Ctrl-I      jump back 
     Ctrl-T      jump forward
-    Ctrl-V      colume visual model
+    Ctrl-V      colume visual model, U u
+    Ctrl-G
+    gCtrl-G     display 
     J           del a CR
     ZZ          equal to :wq
     zz          move to mid 
@@ -172,6 +174,22 @@ my lovers:
     di(
     di[
     ci<
+
+    :saveas file-name
+    tab help gt 
+    :tabedit file-name
+    gt          goto tab
+    tabn
+    tabp
+    tabclose
+
+use register to store your command:
+1.q[a-z]
+2.[your command sequence]
+3.q to quit record
+4.@[a-z] to use,@@ to repeat
+
+                                       :{range}center [width]  
 
 
 

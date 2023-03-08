@@ -56,5 +56,7 @@ map <LEADER>k <C-w>k
 map <LEADER>j <C-w>j
 map <LEADER>h <C-w>h
 map <LEADER>l <C-w>l
+set linebreak
+set wrap
 
 
