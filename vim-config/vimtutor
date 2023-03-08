@@ -143,6 +143,37 @@ NOTE: Pressing <ESC> will place you in Normal mode or will cancel
 
 
 my lovers:
-	cc		delete the current line and switch to Insert Mode, with the cursor reset to the start point.
-	vs		vertical split.
-	To move to the start of the line use a zero:  0
+	cc          delete the current line and switch to Insert Mode, with the cursor reset to the start point.
+    D           d$
+    C           c$
+	vs          vertical split.
+	To move     to the start of the line use a zero:  0
+    .           to repeat the last MODIFY operation.
+    >           move a tab
+    Ctrl-O      jump back (older)
+    Ctrl-I      jump back 
+    Ctrl-T      jump forward
+    Ctrl-V      colume visual model
+    J           del a CR
+    ZZ          equal to :wq
+    zz          move to mid 
+    zt          move to top
+    zb          move to bottom
+    m[mark]     mark a line, using ' to jump to.
+    marks       list the mark.
+    delmarks
+    "*yy        copy to clipboard
+    "*p
+
+    text-objects:
+    daw         del a word
+    das         del a sentence
+    cis         change inner a sentence
+    di(
+    di[
+    ci<
+
+
+
+
+
