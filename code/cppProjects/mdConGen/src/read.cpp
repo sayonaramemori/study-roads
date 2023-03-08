@@ -33,6 +33,13 @@ read::read(const std::string& name)
     {
         std::cout<<"error:File not exists"<<std::endl;
     }
+    this->dest = "CopyVersion_" + name;
+}
+
+read::read(const std::string& name, const std::string& dest):read(name)
+{
+    if(dest.size()!=0)
+    this->dest = dest;
 }
 
 void read::work()
@@ -212,7 +219,7 @@ void read::generate(int type)
 void read::insert(int lineNu=0)
 {
 	ifs.close();
-	std::string name = "result.md";
+	std::string name = this->dest;
 	std::ofstream ofs(name);
 	ofs << contentTable << article;
 	ofs.close();

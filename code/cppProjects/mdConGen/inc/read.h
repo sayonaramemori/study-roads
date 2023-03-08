@@ -9,6 +9,7 @@ class read
 {
 public:
 	read(const std::string& name);
+    read(const std::string& name, const std::string& dest);
     void work();
 	void print();
 private:
@@ -35,6 +36,7 @@ private:
 	std::map<int,int> rank;
 	std::string contentTable;
 	std::string article;
+    std::string dest;
 	std::ifstream ifs;
 	bool state=true;
 	std::vector<dataUnit> res;
