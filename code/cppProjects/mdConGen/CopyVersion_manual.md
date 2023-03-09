@@ -42,7 +42,8 @@ generate the content table according to the DATA 'res',with three type
 void generate(int type);
 ```
 
-### getContent
+### getContent<a href="#getAllLine">^</a>
+
 ```C++
 /*
 get the plain text of content table, without any prefix
