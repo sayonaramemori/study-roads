@@ -2,6 +2,7 @@
 #include<string>
 #include<vector>
 #include<map>
+#include<set>
 
 namespace claris{
 
@@ -13,6 +14,7 @@ public:
     read(const std::string& name, const std::string& dest,const std::string& type);
     read(const std::string& name, const std::string& dest,const std::string& type,const std::pair<int,int>);
     read(const std::string& name, const std::string& dest,const std::string& type,const std::pair<int,int>,int pos);
+read(const std::string& name, const std::string& dest,const std::string& type,const std::pair<int,int> ra,int pos,int targetLine);
 	void print();
     void work();
 private:
@@ -28,6 +30,7 @@ private:
     std::string getBody(std::vector<dataUnit>::iterator it,int* arr=nullptr);
     std::string getNumber(int* arr, int level);
 	void getAllLine();
+    void append();
     int checkFront(const std::string& temp);
 	bool push(const std::string& temp);
 	void generate(int type);
@@ -39,8 +42,10 @@ private:
     void workAfterRange();
     void showParas();
 private:
+    std::string img = "^";
     int insPos = 0;
-    std::vector<int> headLine;
+    int targetLine = -1;
+    std::set<int> headLine;
     std::pair<int,int> range = {0,0};
     std::vector<std::string> lines;
 	std::map<int,int> rank;

@@ -106,9 +106,11 @@ void userInterface(int argc,char* argv[])
     paras[NAME] = argv[1];
     int begin = 0,end = 0;
     int insPos = 0;
+    int targetline = -1;
     if(paras[BEGIN].size()!=0)begin = std::stoi(paras[BEGIN]);
     if(paras[END].size()!=0)end = std::stoi(paras[END]);
     if(paras[INSPOS].size()!=0)insPos = std::stoi(paras[INSPOS]);
+    if(paras[APPEND].size()!=0)targetline= std::stoi(paras[APPEND]);
     auto range = getRange(begin,end);
     checkParas(paras,AllParas);
     showParas(paras);
@@ -116,7 +118,9 @@ void userInterface(int argc,char* argv[])
                       paras[DEST],\
                       paras[TYPE],\
                       range,      \
-                      insPos);
+                      insPos,     \
+                      targetline);
+
     temp.work();
     temp.print();
 }

@@ -88,13 +88,16 @@ read::read(const std::string& name, const std::string& dest,const std::string& t
     this->insPos = pos;
 }
 
+read::read(const std::string& name, const std::string& dest,const std::string& type,const std::pair<int,int> ra,int pos,int targetLine):read(name,dest,type,ra,pos){
+    this->targetLine = targetLine;
+}
 
 void read::showParas(){
     std::cout<<"range:"<<"("<<range.first<<","<<range.second<<")"<<std::endl;
     std::cout<<"New file name:"<<dest<<std::endl;
     std::cout<<"Insert point:"<<insPos<<std::endl;
     std::cout<<"Type:"<<type<<std::endl;
-
+    std::cout<<"Target:"<<targetLine<<std::endl;
 }
 void read::work()
 {
@@ -259,15 +262,30 @@ void read::generate(int type)
     getContent(type);
 }
 
+void read::append(){
+    if(targetLine==-1)return;
+    if(targetLine>0)--targetLine;
+    if(headLine.find(targetLine)==headLine.end()){
+        std::cout<<"Bad target line"<<std::endl;
+        return;
+    }
+    std::string target = lines[targetLine];
+    target = target.substr(target.find_first_of(SPACE)+1);
+    for(auto begin=headLine.begin(),end=headLine.end();begin!=end;++begin){
+        lines[*begin] += "<a href=\"#" + target + "\">" + this->img + "</a>";
+    }
+}
+
 //create a new file to store
 void read::insert()
 {
+    this->append();
 	ifs.close();
 	std::string name = this->dest;
 	std::ofstream ofs(name);
     std::string line;
     auto size = this->lines.size();
-    if(this->insPos<=size){
+    if(insPos>0&&this->insPos<=size){
         --insPos;
         for(int index=0;index<size;++index){
             line = lines[index] + NL;
@@ -347,7 +365,7 @@ void read::workAfterRange(){
 			if(mark)continue;
 			else{
                 headFlag = this->push(line);
-                if(headFlag)headLine.push_back(begin);
+                if(headFlag)headLine.insert(begin);
             }
 		}
     }
