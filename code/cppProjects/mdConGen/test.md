@@ -1,24 +1,12 @@
 # read func
 ## getAllLine
-[read func](#read func)
-[getAllLine](#getAllLine)
-[pushLine](#pushLine)
-[checkFront](#checkFront)
-[generate](#generate)
-[getContent](#getContent)
-[getRank](#getRank)
-[getBody](#getBody)
-[getNumber](#getNumber)
-[getHead](#getHead)
-[getTail](#getTail)
-[read data](#read data)
 ```C++
 /*
 obtain the line of content table and the full message.
 */
 void getAlline();
 ```
-### pushLine<a href="#read func">^</a>
+### pushLine
 ```
 /*
 push a line to the DATA 'res'
