@@ -7,7 +7,7 @@ cmd=g++
 target=$(wildcard $(srcPath)/*.cpp)
 obj=$(patsubst $(srcPath)/%.cpp,$(objPath)/%.o,$(target))
 
-para=-I $(incPath) -Wall
+para=-I $(incPath) -Wall -D DBG
 
 All:main
 	

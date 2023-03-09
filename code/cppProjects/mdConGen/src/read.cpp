@@ -25,6 +25,7 @@
 
 namespace claris{
 
+//specify name
 read::read(const std::string& name)
 {
 	ifs.open(name);
@@ -33,17 +34,24 @@ read::read(const std::string& name)
     {
         std::cout<<"error:File not exists"<<std::endl;
     }
-    //default set name and model
+    //default set name
     this->dest = "CopyVersion_" + name;
+    //default set model
     this->type = PLAIN;
+    //default set range
+    setRange(0,0);
+    //defult set insert pos
+    insPos = 0;
 }
 
+//specify name and output
 read::read(const std::string& name, const std::string& dest):read(name)
 {
     if(dest.size()!=0)
     this->dest = dest;
 }
 
+//spacify name, output and type
 read::read(const std::string& name, const std::string& dest,const std::string& type):read(name,dest)
 {
     if(type=="-p")
@@ -71,27 +79,41 @@ read::read(const std::string& name, const std::string& dest,const std::string& t
     }
 }
 
+//spacify name, output and type
+read::read(const std::string& name, const std::string& dest,const std::string& type,const std::pair<int,int> ra):read(name,dest,type){
+    setRange(ra.first,ra.second);
+}
+
+read::read(const std::string& name, const std::string& dest,const std::string& type,const std::pair<int,int> ra,int pos):read(name,dest,type,ra){
+    this->insPos = pos;
+}
+
+
+void read::showParas(){
+    std::cout<<"range:"<<"("<<range.first<<","<<range.second<<")"<<std::endl;
+    std::cout<<"New file name:"<<dest<<std::endl;
+    std::cout<<"Insert point:"<<insPos<<std::endl;
+    std::cout<<"Type:"<<type<<std::endl;
+
+}
 void read::work()
 {
     if(state)
     {
         getAllLine();
+        workAfterRange();
 		generate(this->type);
-		insert(0);
+		insert();
+        showParas();
     }
 }
 
-
-
-//check the line front
 int read::checkFront(const std::string& temp)
 {
 	if(temp[0]!=START)return std::string::npos;
 	return temp.find_last_of(START);
 }
 
-
-//This function is designed to figure out the prior for every headline.
 void read::getRank()
 {
 	std::set<int> temp;
@@ -115,7 +137,6 @@ void read::getRank()
 		if((curRank - last)>1)rank[begin->level] = last + 1;
         last = curRank;
     }
-
 #ifdef DBG
     std::cout<<UPLINE<<std::endl;
     std::cout<<"This is test for function getRank,to avoid this information, please modify makefile to del -D"<<std::endl;
@@ -127,8 +148,6 @@ void read::getRank()
 #endif
 }
 
-
-//generate tab block 
 std::string read::getHead(int nu)
 {
 	std::string temp;
@@ -138,14 +157,12 @@ std::string read::getHead(int nu)
 	return temp;
 }
 
-//init maxNuber
 void read::initRankMax(int *arr)
 {
     int index = MAXNU;
     while(index--)arr[index]=0;
 }
 
-//key func 
 void read::getContent(int type)
 {
 	std::string body;
@@ -187,7 +204,6 @@ void read::getContent(int type)
         break;
     }
 }
-
 
 std::string read::getNumber(int* arr, int level)
 {
@@ -237,7 +253,6 @@ std::string read::getTail(const std::string& content)
     return tail;
 }
 
-//main func 
 void read::generate(int type)
 {
 	getRank();
@@ -245,13 +260,31 @@ void read::generate(int type)
 }
 
 //create a new file to store
-void read::insert(int lineNu=0)
+void read::insert()
 {
 	ifs.close();
 	std::string name = this->dest;
 	std::ofstream ofs(name);
-	ofs << contentTable << article;
-	ofs.close();
+    std::string line;
+    auto size = this->lines.size();
+    if(this->insPos<=size){
+        --insPos;
+        for(int index=0;index<size;++index){
+            line = lines[index] + NL;
+            if(index==this->insPos){
+                ofs << contentTable << line;
+            }else
+                ofs << line;
+        }
+    }
+    else{
+        ofs << contentTable;
+        for(int index=0;index<size;++index){
+            line = lines[index] + NL;
+            ofs << line;
+        }
+    }
+    ofs.close();
 	return;
 }
 
@@ -261,37 +294,41 @@ void read::print()
 	std::cout<<this->contentTable<<std::endl;
 }
 
-void read::push(const std::string& temp)
+bool read::push(const std::string& temp)
 {
 	//if not start with #, then return;
 	int pos = checkFront(temp);
-	if(pos==std::string::npos)return;
-	
+	if(pos==std::string::npos)return false;
 	dataUnit data;
 	data.level = ++pos;
-
 	//delete space 
 	auto index = temp.find_first_not_of(SPACE,pos);
 	if(index==std::string::npos)
 		data.content = temp.substr(pos);
 	else
 		data.content = temp.substr(index);
-
 	this->res.push_back(data);
-	return;
+	return true;
 }
 
-//This func is designed to get the all page and headline.
-void read::getAllLine()
-{
-	std::string line;
+//nu should be positive
+void read::setRange(int begin,int end){
+    range.first = begin;
+    range.second = end;
+}
+
+
+void read::workAfterRange(){
+    std::string line;
 	bool mark=false;
-	while(std::getline(ifs,line))
-	{
-        //record the content of the file
-		article += line + '\n';
+    bool headFlag;
+    int begin=range.first;
+    int end=range.second;
+    if(end==0)end = lines.size();
+    for(;begin<end;++begin){
+        line = lines[begin];
         //This judge is designed to avoid the # in code block
-		if(line.substr(0,3)==CODEBLO)
+        if(line.substr(0,3)==CODEBLO)
 		{
 			//First come to code block
 			if(mark)
@@ -304,14 +341,26 @@ void read::getAllLine()
 				//set mark, to indicate the field of code;
 				mark = true;
 				//end this loop;
-				continue;
-			}
-		}else
+            }
+        }else
 		{
 			if(mark)continue;
-			else this->push(line);
+			else{
+                headFlag = this->push(line);
+                if(headFlag)headLine.push_back(begin);
+            }
 		}
-	}
+    }
+}
+
+void read::getAllLine()
+{
+	std::string line;
+	while(std::getline(ifs,line))
+	{
+        //store every line
+        this->lines.push_back(line);
+    }
 }
 
 
