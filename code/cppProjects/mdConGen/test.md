@@ -10,6 +10,7 @@
 [getHead](#getHead)
 [getTail](#getTail)
 [read data](#read data)
+
 # read func<a href="#getAllLine">^</a>
 ## getAllLine<a href="#getAllLine">^</a>
 ```C++
