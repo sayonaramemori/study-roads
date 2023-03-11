@@ -64,7 +64,8 @@ map <leader>w :wq<CR>
 map <leader>v :vs 
 
 nnoremap <leader>ta :TagbarToggle<CR>
-"map <leader><leader> :source ~/.vimrc<CR>
+
 nnoremap <leader><leader> I<ESC>d0i<backspace><CR><ESC>
 inoremap { {<CR><CR>}<ESC>kcc
-
+inoremap [ []<ESC>i
+inoremap " ""<ESC>i
