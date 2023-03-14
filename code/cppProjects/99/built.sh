@@ -2,6 +2,7 @@ mkdir src obj inc -p
 touch manual.md
 rm makefile -f
 
+touch makefile
 
 echo 'srcPath=./src' >> makefile
 echo 'objPath=./obj' >> makefile
