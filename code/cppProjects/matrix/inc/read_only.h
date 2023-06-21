@@ -51,15 +51,15 @@ namespace claris{
     };
 
 
-    class read_only{
+    class read_with_mark{
     public:
-        read_only()=delete;
-        virtual ~read_only(){
+        read_with_mark()=delete;
+        virtual ~read_with_mark(){
             for(auto v:comment_marks){
                 delete v;
             }
         }
-        read_only(const std::string& file_name,const std::string& comment_mark="");
+        read_with_mark(const std::string& file_name,const std::string& comment_mark="");
         bool reset(const std::string& file_name,const std::string& comment_mark="");
         bool add_comment_mark(const std::string& pre, const std::string& lat="");
         void rm_comment_mark(const std::string& pre, const std::string& lat="");
@@ -73,37 +73,48 @@ namespace claris{
             }
             std::cout<<"-----COMMENTS-----"<<std::endl;
         }
-        const int npos = -1;
-        bool get_state(){return this->state;}
-        std::string get_file_name(){return this->file_name;}
-    protected:
-        void set_state(bool val){this->state = val;}
-        void set_file_name(const std::string& name){this->file_name = name;}
-        std::vector<comment*> comment_marks;
+        static constexpr int npos = -1;
+    private:
         std::vector<std::string> single_lines;
         virtual int check_comment(const std::string& line,const std::string& mark="")=0;
         virtual void trim(){}
 
-    private:
-        std::string file_name;
-        bool state=false;
-        bool open_file();
-        friend std::ostream& operator<<(std::ostream& os,const read_only& ro);
+        std::vector<comment*> comment_marks;
+        friend std::ostream& operator<<(std::ostream& os,const read_with_mark& ro);
     };
 
-    std::ostream& operator<<(std::ostream& os,const read_only& ro);
+    std::ostream& operator<<(std::ostream& os,const read_with_mark& ro);
+    constexpr int read_with_mark::npos;
 
 }
 using claris::operator<<;
 
+namespace claris{
+    class read_only{
+    public:
+        read_only()=delete;
+        read_only(const std::string& name){
+
+        }
+        bool get_state(){return this->state;}
+        std::string get_file_name(){return this->file_name;}
+        bool reset(const std::string& file_name);
+    private:
+        std::string file_name;
+        bool state=false;
+        bool open_file();
+    protected:
+
+    };
+}
 
 #endif
 
 /*pure virtual base class*
  *
  * constructor:
- *          read_only(const string& file_name);
- *          read_only(const string& file_name, const string& single_comment_mark);
+ *          read_with_mark(const string& file_name);
+ *          read_with_mark(const string& file_name, const string& single_comment_mark);
  * interface:
  *          add_comment_mark(const string&);
  *          add_comment_mark(const string&,const string&);     //for couple comment mark

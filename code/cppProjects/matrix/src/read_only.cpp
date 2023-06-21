@@ -1,10 +1,10 @@
-#include"read_only.h"
+#include"read_with_mark.h"
 
-claris::read_only::read_only(const std::string& file_name,const std::string& comment_mark){
+claris::read_with_mark::read_with_mark(const std::string& file_name,const std::string& comment_mark){
     this->reset(file_name,comment_mark);
 }
 
-bool claris::read_only::reset(const std::string& file_name,const std::string& comment_mark){
+bool claris::read_with_mark::reset(const std::string& file_name,const std::string& comment_mark){
     this->file_name = file_name;
     if(open_file()){
         if(!comment_mark.empty())add_comment_mark(comment_mark);
@@ -13,7 +13,7 @@ bool claris::read_only::reset(const std::string& file_name,const std::string& co
     return this->state;
 }
 
-bool claris::read_only::open_file(){
+bool claris::read_with_mark::open_file(){
     std::ifstream ifs(this->file_name);
     if(this->state = ifs.is_open()){
         std::string temp;
@@ -22,7 +22,7 @@ bool claris::read_only::open_file(){
     return this->state;
 }
 
-std::ostream& claris::operator<<(std::ostream& os,const read_only& ro)
+std::ostream& claris::operator<<(std::ostream& os,const read_with_mark& ro)
 {
     for(auto &v:ro.single_lines)
     {
@@ -31,7 +31,7 @@ std::ostream& claris::operator<<(std::ostream& os,const read_only& ro)
     return os;
 }
 
-bool claris::read_only::add_comment_mark(const std::string& pre, const std::string& lat){
+bool claris::read_with_mark::add_comment_mark(const std::string& pre, const std::string& lat){
     if(lat.empty()){
         for(auto &v:this->comment_marks){
             if(v->get_start()==pre)
@@ -48,7 +48,7 @@ bool claris::read_only::add_comment_mark(const std::string& pre, const std::stri
     return true;
 }
 
-void claris::read_only::rm_comment_mark(const std::string& pre, const std::string& lat){
+void claris::read_with_mark::rm_comment_mark(const std::string& pre, const std::string& lat){
     if(lat.empty()){
         for(int i=0;i<comment_marks.size();++i){
             if(comment_marks[i]->get_start()==pre){
