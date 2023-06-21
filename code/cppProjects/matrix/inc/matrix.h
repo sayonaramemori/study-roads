@@ -17,15 +17,19 @@ namespace claris{
         matrix(std::vector<std::vector<double>>,int type=COL);
         std::vector<double> get_root();
         void transform();
+        int rank();
+        double det();
+        bool is_square(){return size_out==size_in;}
         matrix& operator=(const matrix&);
-        matrix& operator-();
         matrix operator-(const matrix&);
         matrix operator+(const matrix&);
         matrix operator*(const matrix&);
-        matrix operator*(int);
+        matrix operator*(double);
+
+        static constexpr int n
     private:
         double laplace(const std::vector<std::vector<double>> &val);
-        void assign(const MATRIX&);
+
     private:
         MATRIX data;
         size_t size_out;
