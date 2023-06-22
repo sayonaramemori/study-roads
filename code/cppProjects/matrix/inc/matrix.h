@@ -20,15 +20,18 @@ namespace claris{
         int rank();
         double det();
         bool is_square(){return size_out==size_in;}
+        bool empty(){return size_out==0;}
         matrix& operator=(const matrix&);
         matrix operator-(const matrix&);
         matrix operator+(const matrix&);
         matrix operator*(const matrix&);
         matrix operator*(double);
 
-        static constexpr int n
     private:
         double laplace(const std::vector<std::vector<double>> &val);
+        //to make sure the correctly initailization
+        void matrix::assign(const MATRIX& mat);
+        bool same_shape(const matrix& mat);
 
     private:
         MATRIX data;

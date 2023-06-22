@@ -1,4 +1,4 @@
-# 配置git 
+# git configuration
 
 ## 配置用户名和邮箱
 
@@ -59,7 +59,7 @@ git commit --amend
 //上面三条指令最终只是产生一个提交，第二个提交修正了第一个提交的内容
 ```
 
-## 取消暂存
+## unstage
 ```
 git reset HEAD FILES
 ```

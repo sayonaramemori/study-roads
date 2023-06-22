@@ -7,10 +7,17 @@ namespace claris{
         return *this;
     }
     matrix matrix::operator-(const matrix& mat){
-        
+        for(auto& v:data){
+            for(auto& vi:v){
+                vi *= -1;
+            }
+        }
+        return v.data;
     }
     matrix matrix::operator+(const matrix& mat){
-        
+        if(same_shape(mat)){
+
+        }else ;
     }
     matrix matrix::operator*(const matrix& mat){
         
@@ -18,6 +25,10 @@ namespace claris{
     matrix matrix::operator*(double k){
         
     }
+    bool matrix::same_shape(const matrix& mat){
+        return (this->size_out==mat.size_out&&this->size_in==mat.size_in);
+    }
+        
 
 
     // Function to calculate the determinant of a square matrix
@@ -89,6 +100,18 @@ namespace claris{
         size_in = data[0].size();
         this->assign(val);
         if(type==ROW)transform();
+    }
+
+    void matrix::assign(const MATRIX& mat){
+        this->data = std::vector<std::vector<double>>(size_out,std::vector<double>(size_in,0));
+        for(int i=0;i<size_out;++i){
+            int size = mat[i].size();
+            int index_min = (size_in>size)?size:size_in;
+            for(int j=0;j<index_min;++j){
+                data[i][j] = mat[i][j];
+            }
+        }
+        return;
     }
 
 
