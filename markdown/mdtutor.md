@@ -20,7 +20,6 @@
 # 一级标题
 ## 二级标题
 ###### 六级标题
-###### testline
 
 ------
 
@@ -98,8 +97,7 @@ __________
 [Github](https://github.com/) is a good site.  
 [github-by-reference] is a good site.
 
-[github-by-reference]:
-https://github.com/
+[github-by-reference]:https://github.com/
 
 ----
 
@@ -132,7 +130,7 @@ test
 |content1|conten2|content3|
 > 表格对齐格式如下  
 1. :--- 左对齐（默认）
-2. ---： 右对齐
+2. ----: 右对齐
 3. :---: 居中
 
 #### 任务列表

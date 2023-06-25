@@ -1,34 +1,80 @@
 #include"matrix.h"
+
 namespace claris{
     matrix& matrix::operator=(const matrix& mat){
+        //totally copy
         this->data = mat.data;
         this->size_out = mat.size_out;
         this->size_in = mat.size_in;
         return *this;
     }
-    matrix matrix::operator-(const matrix& mat){
-        for(auto& v:data){
-            for(auto& vi:v){
-                vi *= -1;
+
+    matrix matrix::operator-(const matrix& mat)const{
+        if(!same_shape(mat)){
+            std::cout<<"Two matrix with different shape, - operation failed"<<std::endl;
+            abort();
+        }
+        matrix temp = *this;
+        for(int i=0;i<size_out;++i)
+            for(int j=0;j<size_in;++j){
+                temp.data[i][j] -= mat.data[i][j];
+            }
+        return temp;
+    }
+
+
+    matrix matrix::operator+(const matrix& mat)const{
+        if(!same_shape(mat)){
+            std::cout<<"Two matrix with different shape, + operation failed"<<std::endl;
+            abort();
+        }
+        matrix temp = *this;
+        for(int i=0;i<size_out;++i)
+            for(int j=0;j<size_in;++j){
+                temp.data[i][j] += mat.data[i][j];
+            }
+        return temp;
+    }
+
+    matrix matrix::operator*(const matrix& mat)const{
+        if(this->size_out!=mat.size_in){
+            std::cout<<"Two matrix with different column & row, * operation failed"<<std::endl;
+            abort();
+        }
+        matrix temp(std::vector<std::vector<double>> (mat.size_out,std::vector<double>(this->size_in,0.0)));
+        for(int row=0;row<temp.size_in;++row)
+            for(int col=0;col<temp.size_out;++col){
+                double res = 0;
+                for(int i=0;i<this->size_out;++i){
+                    res += mat.data[col][i]*locate(row,i);
+                }
+                temp.data[row][col] = res;
+            }
+        return temp;
+    }
+
+    matrix matrix::operator*(double k)const{
+        auto temp = *this;
+        for(int i=0;i<size_out;++i)
+            for(int j=0;j<size_in;++j){
+                temp.data[i][j] *= k;
+            }
+        return temp;
+    }
+
+    double matrix::det(){
+        if(is_square())return laplace(data);
+        MATRIX temp;
+        temp = data;
+        if(size_out>size_in){
+            temp.resize(size_in);
+        }else{
+            for(auto&v:temp){
+                v.resize(size_out);
             }
         }
-        return v.data;
+        return laplace(temp);
     }
-    matrix matrix::operator+(const matrix& mat){
-        if(same_shape(mat)){
-
-        }else ;
-    }
-    matrix matrix::operator*(const matrix& mat){
-        
-    }
-    matrix matrix::operator*(double k){
-        
-    }
-    bool matrix::same_shape(const matrix& mat){
-        return (this->size_out==mat.size_out&&this->size_in==mat.size_in);
-    }
-        
 
 
     // Function to calculate the determinant of a square matrix
@@ -96,8 +142,8 @@ namespace claris{
     }
 
     matrix::matrix(std::vector<std::vector<double>> val,int type){
-        size_out = data.size();
-        size_in = data[0].size();
+        size_out = val.size();
+        size_in = val[0].size();
         this->assign(val);
         if(type==ROW)transform();
     }

@@ -1,6 +1,8 @@
 #ifndef READ_WITH_MARK
 #define READ_WITH_MARK
 #include "read_only.h"
+#include<set>
+#include"matrix.h"
 
 namespace claris{
 
@@ -70,13 +72,17 @@ namespace claris{
             std::cout<<"-----COMMENTS-----"<<std::endl;
         }
         virtual void trim();
+        std::vector<matrix> getMatrix(){return get_matrix(comment_pos,single_lines);}
     protected:
         virtual int check_comment(const std::string& line,const std::string& mark="");
-    private:
-        static constexpr int npos = -1;
+        std::set<int> comment_pos;
         std::vector<std::string> single_lines;
+    private:
+        std::vector<matrix> get_matrix(const std::set<int>& comment_pos,const std::vector<std::string>& lines);
         //pointer for dynamic bind
         std::vector<comment*> comment_marks;
+        static constexpr int npos = -1;
+
         friend std::ostream& operator<<(std::ostream& os,const read_with_mark& ro);
     };
 

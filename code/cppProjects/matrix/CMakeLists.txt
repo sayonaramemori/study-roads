@@ -16,4 +16,5 @@ set(LIBRARY_OUTPUT_PATH ~/myLib)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build)
 
+add_definitions(-DDEBUG)
 add_executable(test ${SRC})
