@@ -63,9 +63,35 @@ map <leader>w :wq<CR>
 "map <leader>q :q!<CR>
 map <leader>v :vs 
 
-nnoremap <leader>ta :TagbarToggle<CR>
+map <leader>ta :TagbarToggle<CR>
+map <leader><leader> I<ESC>d0i<backspace><CR><ESC>
+"inoremap { {<CR><CR>}<ESC>kcc
+" Mapping for C and C++ header files
+autocmd FileType cpp,c inoremap <buffer> { {<CR><CR>}<ESC>kcc
 
-nnoremap <leader><leader> I<ESC>d0i<backspace><CR><ESC>
-inoremap { {<CR><CR>}<ESC>kcc
+inoremap { {}<ESC>i
 inoremap [ []<ESC>i
-inoremap " ""<ESC>i
+nnoremap - 0
+nnoremap = $
+
+
+"nnoremap <space> zA
+"set fdm=indent
+
+call plug#begin()
+Plug 'preservim/nerdcommenter'
+Plug 'bfrg/vim-cpp-modern'
+call plug#end()
+
+" Disable function highlighting (affects both C and C++ files)
+"let g:cpp_function_highlight = 0
+
+" Enable highlighting of C++11 attributes
+let g:cpp_attributes_highlight = 1
+
+" Highlight struct/class member variables (affects both C and C++ files)
+let g:cpp_member_highlight = 1
+
+" Put all standard C and C++ keywords under Vim's highlight group 'Statement'
+" (affects both C and C++ files)
+let g:cpp_simple_highlight = 1
