@@ -1,14 +1,16 @@
-### 1.clash project repository
+### clash 项目地址
 - [clash] click here to go
+- <https://github.com/Dreamacro/clash>
+- 下载已编译好的clash执行程序
 
-### 2.Get config and Country.mmdb files  
-1. open clash on windows.
-2. open the folder where config file exists.
-3. copy to your device.
-4. gather all files into a directory.
+### 配置文件
+1. 打开windows里的clash，右键打开配置文件所在目录
+2. 复制配置文件，包括 config.yaml 和 Country.mmdb
+3. 将上述文件放到一个文件夹里，建议放/opt/clash
 
-### 3.write a service for clash on linux  
-> for example, edit with the path--`/etc/systemed/system/clash.service`  
+### 将clash设为守护进程
+> 键入`vim /etc/systemed/system/clash.service`  
+> 文件内容如下，直接复制粘贴即可。
 ```shell
 [Unit]
 Description=clash-core
@@ -20,18 +22,23 @@ WantedBy=multi-user.target
 Alias=clash.service
 ```
 
-### 4.using on terminal
+### 在终端中启用clash
 ```shell
+#可将下面两行放入~/.bashrc中，否则仅对当次终端有效。
 export http_proxy="http://127.0.0.1:7890"
 export http_proxys="http://127.0.0.1:7890"
+
+#启动clash
 systemctl daemon-reload
 systemctl start clash
+
+#把clash设为开机自启
 systemctl enable clash
 
 ```
 
 
-### 5.test
+### 测试
 ```shell
 curl -i google.com
 ```
