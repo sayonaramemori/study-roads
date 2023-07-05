@@ -5,10 +5,10 @@
 1. open clash on windows.
 2. open the folder where config file exists.
 3. copy to your device.
-4. gether all files into a directory.
+4. gather all files into a directory.
 
 ### 3.write a service for clash on linux  
-- example:edit with the path--`/etc/systemed/system/clash.service`  
+> for example, edit with the path--`/etc/systemed/system/clash.service`  
 ```shell
 [Unit]
 Description=clash-core
@@ -24,8 +24,17 @@ Alias=clash.service
 ```shell
 export http_proxy="http://127.0.0.1:7890"
 export http_proxys="http://127.0.0.1:7890"
-system
+systemctl daemon-reload
+systemctl start clash
+systemctl enable clash
 
 ```
 
+
+### 5.test
+```shell
+curl -i google.com
+```
+
 [clash]:https://github.com/Dreamacro/clash
+
