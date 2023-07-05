@@ -40,7 +40,7 @@ decltype(y) u = x;          //u is type double &
 decltype(pd) v;             //v is type const double *
 long indeed(int);
 decltype (indeed(3)) m;     //m is type int. It not actually call this function.
-decltype ((x)) r = x;       //r is type double &
+decltype ((x)) r = x;       //r is type double &, only for a variable
 decltyps(x+y) j;            //j is type double
 
 /* decltype for template*/
