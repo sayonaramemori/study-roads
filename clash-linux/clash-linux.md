@@ -9,7 +9,8 @@
 3. 将上述文件放到一个文件夹里，建议放/opt/clash
 
 ### 将clash设为守护进程
-> 键入`vim /etc/systemed/system/clash.service`  
+> 键入`cd /etc/systemed/system`  
+> 然后`vim clash.service`
 > 文件内容如下，直接复制粘贴即可。
 ```shell
 [Unit]
