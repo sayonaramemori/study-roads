@@ -6,7 +6,8 @@
 ### 配置文件
 1. 打开windows里的clash，右键打开配置文件所在目录
 2. 复制配置文件，包括 config.yaml 和 Country.mmdb
-3. 将上述文件放到一个文件夹里，建议放/opt/clash
+3. 将上述文件放到一个文件夹里，然后传送至/opt/clash下，并解压和赋予执行权限
+4. 执行`./clash --help`进行测试，如果执行失败，说明下载错了版本，需重新下载对应版本
 
 ### 将clash设为守护进程
 > 键入`cd /etc/systemd/system`  
@@ -17,7 +18,7 @@
 Description=clash-core
 [Service]
 Type=simple
-ExecStart=[Your-clash-directory]/clash -f [config-path] -d [country-path]
+ExecStart=/opt/clash/clash -f /opt/clash/config.yml -d /opt/clash/
 [Install]
 WantedBy=multi-user.target
 Alias=clash.service
