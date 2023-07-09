@@ -28,7 +28,7 @@ Alias=clash.service
 ```shell
 #可将下面两行放入~/.bashrc中，否则仅对当次终端有效。
 export http_proxy="http://127.0.0.1:7890"
-export http_proxys="http://127.0.0.1:7890"
+export https_proxy="http://127.0.0.1:7890"
 
 #启动clash
 systemctl daemon-reload
