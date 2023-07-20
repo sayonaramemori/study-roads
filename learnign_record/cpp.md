@@ -49,6 +49,9 @@ auto gt(T1 x, T2 y)-> decltype(x+y)
 {
     ...
 }
+
+//if exist function func, use decltype(func)* to get the same type function pointer
+decltype(func)* temp = func;
 ```
 
 
