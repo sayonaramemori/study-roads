@@ -15,7 +15,7 @@ set softtabstop=4
 " === Status/command bar
 " ===
 "set laststatus=2
-set cmdheight=1
+set cmdheight=2
 set autochdir
 set showcmd
 set showmode
@@ -25,7 +25,7 @@ set wildmenu
 set autoindent
 set smartindent
 
-set list
+set list 
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
 
@@ -39,10 +39,8 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 
 
 " Resize splits with arrow keys
-map <up> :res +5<CR>
-map <down> :res -5<CR>
-map <left> :vertical resize-5<CR>
-map <right> :vertical resize+5<CR>
+map <up> :vertical resize+5<CR>
+map <down> :vertical resize-5<CR>
 
 " Copy to system clipboard
 vnoremap Y :w !xclip -i -sel c<CR>
@@ -53,6 +51,10 @@ let mapleader=";"
 "open vimrc anytime
 map <leader>rc :e ~/.vimrc<CR>
 
+map <leader>t :tabe<CR>
+map <left> :-tabnext<CR>
+map <right> :+tabnext<CR>
+
 "move between two screen
 map <LEADER>k <C-w>k
 map <LEADER>j <C-w>j
@@ -60,11 +62,10 @@ map <LEADER>h <C-w>h
 map <LEADER>l <C-w>l
 
 map <leader>w :wq<CR>
-"map <leader>q :q!<CR>
 map <leader>v :vs 
 
 map <leader>ta :TagbarToggle<CR>
-map <leader><leader> I<ESC>d0i<backspace><CR><ESC>
+map <leader><leader> :source $VIMRC<CR>
 "inoremap { {<CR><CR>}<ESC>kcc
 " Mapping for C and C++ header files
 autocmd FileType cpp,c inoremap <buffer> { {<CR><CR>}<ESC>kcc
@@ -80,18 +81,17 @@ nnoremap = $
 
 call plug#begin()
 Plug 'preservim/nerdcommenter'
-Plug 'bfrg/vim-cpp-modern'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'preservim/nerdtree'
 call plug#end()
 
-" Disable function highlighting (affects both C and C++ files)
-"let g:cpp_function_highlight = 0
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_concepts_highlight = 1
 
-" Enable highlighting of C++11 attributes
-let g:cpp_attributes_highlight = 1
-
-" Highlight struct/class member variables (affects both C and C++ files)
-let g:cpp_member_highlight = 1
-
-" Put all standard C and C++ keywords under Vim's highlight group 'Statement'
-" (affects both C and C++ files)
-let g:cpp_simple_highlight = 1
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
