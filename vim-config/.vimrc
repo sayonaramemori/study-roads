@@ -30,7 +30,6 @@ set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
 
 syntax on
-colorschem ron
 filetype plugin indent on
 
 "jump to the point where quit last time."
@@ -74,7 +73,7 @@ inoremap { {}<ESC>i
 inoremap [ []<ESC>i
 nnoremap - 0
 nnoremap = $
-
+nnoremap <backspace> d0i
 
 "nnoremap <space> zA
 "set fdm=indent
@@ -83,7 +82,11 @@ call plug#begin()
 Plug 'preservim/nerdcommenter'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'connorholyday/vim-snazzy'
 call plug#end()
+
+colorschem snazzy
 
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
@@ -95,3 +98,4 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <leader>c :NERDTreeClose<CR>
