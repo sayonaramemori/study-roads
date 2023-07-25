@@ -54,5 +54,7 @@ auto gt(T1 x, T2 y)-> decltype(x+y)
 decltype(func)* temp = func;
 ```
 
+### template
+
 
 

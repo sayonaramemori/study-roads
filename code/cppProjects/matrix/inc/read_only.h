@@ -19,7 +19,7 @@ namespace claris{
         std::string file_name;
         std::vector<std::string> single_lines;
         bool state=false;
-        bool open_file();
+        bool open_file(const std::string &name);
         friend std::ostream& operator<<(std::ostream& os, const read_only& ro);
     protected:
         const std::vector<std::string>& get_origin()const{return this->single_lines;}

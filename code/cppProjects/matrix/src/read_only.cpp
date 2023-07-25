@@ -7,8 +7,10 @@ std::ostream& claris::operator<<(std::ostream& os, const claris::read_only& ro){
     return os;
 }
 
-bool claris::read_only::open_file(){
-    std::ifstream ifs(this->file_name);
+//This function will clear container first for the new file.
+bool claris::read_only::open_file(const std::string &name){
+    single_lines.clear();
+    std::ifstream ifs(name);
     single_lines.clear();
     if(this->state = ifs.is_open()){
         std::string temp;
@@ -20,6 +22,6 @@ bool claris::read_only::open_file(){
 
 bool claris::read_only::reset(const std::string& file_name){
     this->file_name = file_name;
-    return open_file();
+    return open_file(file_name);
 }
 

@@ -45,5 +45,12 @@ systemctl enable clash
 curl -i google.com
 ```
 
+### stop clash
+```shell
+systemctl stop clash
+unset http_proxy
+unset https_proxy
+```
+
 [clash]:https://github.com/Dreamacro/clash
 
