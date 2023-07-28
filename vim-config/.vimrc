@@ -73,7 +73,7 @@ inoremap { {}<ESC>i
 inoremap [ []<ESC>i
 nnoremap - 0
 nnoremap = $
-nnoremap <backspace> d0i
+nnoremap <backspace> d0
 
 "nnoremap <space> zA
 "set fdm=indent
@@ -83,6 +83,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'connorholyday/vim-snazzy'
 call plug#end()
 
