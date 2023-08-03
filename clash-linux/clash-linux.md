@@ -21,7 +21,7 @@ Type=simple
 ExecStart=/opt/clash/clash -f /opt/clash/config.yml -d /opt/clash/
 [Install]
 WantedBy=multi-user.target
-Alias=clash.service
+Alias=clash_for_linux.service
 ```
 
 ### 在终端中启用clash
