@@ -53,7 +53,7 @@ git add NEW
 git commit --amend
 /*example:
 git commit -m "initial commit"
-git add forgotten_file
+ait add forgotten_file
 git commit --amend
 */
 //上面三条指令最终只是产生一个提交，第二个提交修正了第一个提交的内容

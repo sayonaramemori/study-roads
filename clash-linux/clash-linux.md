@@ -21,7 +21,6 @@ Type=simple
 ExecStart=/opt/clash/clash -f /opt/clash/config.yml -d /opt/clash/
 [Install]
 WantedBy=multi-user.target
-Alias=clash_for_linux.service
 ```
 
 ### 在终端中启用clash
@@ -30,24 +29,34 @@ Alias=clash_for_linux.service
 export http_proxy="http://127.0.0.1:7890"
 export https_proxy="http://127.0.0.1:7890"
 
+#查看环境变量
+export
+
 #启动clash
 systemctl daemon-reload
 systemctl start clash
 
 #把clash设为开机自启
-systemctl enable clash
-
+systemctl enable clash.service
+#检查是否开机自启
+systemctl is-enabled clash.service
 ```
 
 
 ### 测试
 ```shell
-curl -i google.com
+curl -i www.google.com
 ```
 
-### stop clash
+### 关闭clash
 ```shell
+#终止clash服务
 systemctl stop clash
+
+#关闭开机自启
+systemctl disable clash
+
+#删除设置的环境变量
 unset http_proxy
 unset https_proxy
 ```
