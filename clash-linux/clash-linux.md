@@ -45,7 +45,7 @@ systemctl is-enabled clash.service
 
 ### 测试
 ```shell
-curl -i www.google.com
+curl -i google.com
 ```
 
 ### 关闭clash
