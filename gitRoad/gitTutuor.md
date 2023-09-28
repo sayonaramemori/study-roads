@@ -92,3 +92,14 @@ git merge [branch-name] //在当前分支合并指定的分支
 git branch -d [branch-name] //删除分支
 
 ```
+
+## 使用不同的ssh-key读写仓库  
+```
+git remote add [name] ssh-url
+cd ~/.ssh
+vim config
+
+Host [alias]
+    Hostname github.com
+    IdentityFile="secret key absolute path"
+```
