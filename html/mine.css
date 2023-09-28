@@ -1,0 +1,40 @@
+h1 {
+    color:green;
+    font-size:20px;
+}
+
+a {
+    text-decoration: none;
+    color: gray;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1::after {
+    content:" Baby";
+}
+
+h1::first-letter {
+    color: "skyblue";
+    font-size: 40px;
+}
+
+div>p:first-child {
+    color:red;
+}
+
+::selection {
+    color: red;
+    background-color: skyblue;
+}
+
+::placeholder {
+    color: skyblue;
+    text-decoration: underline;
+}
+
+* {
+cursor: url("./pointer.cur"),pointer;
+}
