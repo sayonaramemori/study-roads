@@ -1,4 +1,4 @@
-set number
+set relativenumber
 set cursorline
 set nohls
 
@@ -85,9 +85,12 @@ Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'connorholyday/vim-snazzy'
+Plug 'rafi/awesome-vim-colorschemes'
 call plug#end()
+""colorschem snazzy
+colorschem abstract
 
-colorschem snazzy
+
 
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1

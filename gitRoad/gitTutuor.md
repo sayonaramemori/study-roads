@@ -95,7 +95,7 @@ git branch -d [branch-name] //删除分支
 
 ## 使用不同的ssh-key读写仓库  
 ```
-git remote add [name] ssh-url
+git remote add [name] git@[alias]:sayonaramemori/study-roads.git
 cd ~/.ssh
 vim config
 

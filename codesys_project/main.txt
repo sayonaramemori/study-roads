@@ -1,0 +1,15 @@
+PROGRAM MAIN
+VAR
+    PUMP1_ERROR AT%I0.0:BOOL;
+    PUMP2_ERROR AT%I0.1:BOOL;
+    
+END_VAR
+
+
+----------------
+
+IF PUMP1_ERROR OR PUMP2_ERROR THEN 
+    ;
+ELSE
+    
+
