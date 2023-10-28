@@ -1,10 +1,22 @@
 use test;
-create table calcu(
-    mg double,
-    Qg double,
+create table myfirst(
+    id int primary key auto_increment,
+    mg double not null,
+    Qg double check (Qg>0),
     ml double,
     Ql double,
     Re double,
-    Eg double);
-desc calcu;
-insert into calcu values(1,2,3,4,5,6),(7,8,9,10,11,12);
+    Eg double
+);
+
+insert into myfirst(mg,Qg,ml,Ql,Re,Eg) values(ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()));
+insert into myfirst(mg,Qg,ml,Ql,Re,Eg) values(ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()));
+insert into myfirst(mg,Qg,ml,Ql,Re,Eg) values(ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()));
+insert into myfirst(mg,Qg,ml,Ql,Re,Eg) values(ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()));
+insert into myfirst(mg,Qg,ml,Ql,Re,Eg) values(ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()));
+insert into myfirst(mg,Qg,ml,Ql,Re,Eg) values(ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()),ceil(100*rand()));
+
+
+
+
+

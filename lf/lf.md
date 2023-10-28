@@ -40,3 +40,18 @@ set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 map x $rm $fx -rvi
 ```
 
+### Operation
+```
+//mark the current work directory
+m
+//unmark
+"
+//jump to the directory marked
+'
+//delete a file
+x
+//edit with vim
+v
+```
+
+

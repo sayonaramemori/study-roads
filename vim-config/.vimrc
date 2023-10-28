@@ -28,6 +28,7 @@ set smartindent
 set list 
 set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
+set timeout timeoutlen=300 ttimeoutlen=100
 
 syntax on
 filetype plugin indent on
@@ -48,23 +49,25 @@ vnoremap Y :w !xclip -i -sel c<CR>
 let mapleader=";"
 
 "open vimrc anytime
-map <leader>rc :e ~/.vimrc<CR>
+nnoremap <leader>rc :e ~/.vimrc<CR>
+inoremap <leader><leader> <Esc>
 
-map <leader>t :tabe<CR>
-map <left> :-tabnext<CR>
-map <right> :+tabnext<CR>
+nnoremap <leader>t :tabe<CR>
+nnoremap <left> :-tabnext<CR>
+nnoremap <right> :+tabnext<CR>
 
 "move between two screen
-map <LEADER>k <C-w>k
-map <LEADER>j <C-w>j
-map <LEADER>h <C-w>h
-map <LEADER>l <C-w>l
+nnoremap <LEADER>k <C-w>k
+nnoremap <LEADER>j <C-w>j
+nnoremap <LEADER>h <C-w>h
+nnoremap <LEADER>l <C-w>l
 
-map <leader>w :wq<CR>
-map <leader>v :vs 
+nnoremap <leader>w :wq<CR>
+nnoremap <leader>v :vs 
+nnoremap a A
 
-map <leader>ta :TagbarToggle<CR>
-map <leader><leader> :source $VIMRC<CR>
+nnoremap <leader>ta :TagbarToggle<CR>
+nnoremap <leader><leader> :source ~/.vimrc<CR>
 "inoremap { {<CR><CR>}<ESC>kcc
 " Mapping for C and C++ header files
 autocmd FileType cpp,c inoremap <buffer> { {<CR><CR>}<ESC>kcc
@@ -87,6 +90,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'connorholyday/vim-snazzy'
 Plug 'rafi/awesome-vim-colorschemes'
 call plug#end()
+"Plug 'ludovicchabant/vim-gutentags'
 ""colorschem snazzy
 colorschem abstract
 
@@ -99,7 +103,15 @@ let g:cpp_posix_standard = 1
 let g:cpp_concepts_highlight = 1
 
 nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <leader>c :NERDTreeClose<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-nnoremap <leader>c :NERDTreeClose<CR>
+
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Open the existing NERDTree on each new tab.
+"autocmd BufWinEnter * if &buftype != 'quickfix' && getcmdwintype() == '' | silent NERDTreeMirror | endif
+" Start NERDTree and put the cursor back in the other window.
+"autocmd VimEnter * NERDTree | wincmd p
