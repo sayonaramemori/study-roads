@@ -155,6 +155,20 @@ foreign key;
 
 ### 多表查询
 
+### 事务
+```
+select @@autocommit;
+set @@autocommit = 0;
+
+start transaction;  //即手动，需commit;
+commit;
+rollback;
+
+select @@transaction_isolation; //查看隔离级别
+set [session|global] transaction isolation level [LEVEL];
+```
+![transaction-issue](./transaction_issue.jpg)
+![transaction-level](./isolation_level.jpg)
 
 -------
 ### 索引
@@ -174,6 +188,87 @@ set profiling = 1;
 show profiles;
 ```
 
+### 存储过程
+##### 基本语法
+```
+create procedure proc-name([IN|OUT|INOUT] para Type,...)
+begin
+  sql script;
+end;
+show create procedure proc-name;
+
+call proc-name();
+//查看存储过程
+select * from information_schema.ROUTINES where ROUTINE_SCHEMA = 'database.name';
+drop procedure if exists proc-name;
+//set end sign;
+delimiter $$
+```
+
+##### 变量
+```
+//系统变量
+show [session|global] variables;
+show [session|global] variables like '___';
+select @@[session|global].variable_name;
+set [session|global] val-name = value;
+
+//用户变量,无需提前声明
+set @var-name=value;
+select [field-name] into @var-name from [table-name];
+select @var-name;
+
+//局部变量,需提前声明
+declare var-name type [default val];
+set var-name = value;
+//example
+create procedure p1()
+begin
+    declare stu int default 0;
+    select count(*) into stu from stu;
+    select stu;
+end;
+```
+
+##### 流程语句
+```
+if [test] then
+    ...;
+elseif [test] then
+    ...;
+else
+    ...;
+end if;
+
+while [test] do
+    ...;
+end while;
+```
+
+##### 存储函数
+```
+//输入参数只能是in
+create function name(name type)
+returns type [determinstic|no sql|reads sql data]
+begin
+    ...;
+    return variable;
+end;
+```
+
+### 锁
+```
+//global lock : lock database, read only;
+flush tables with read lock;
+unlock tables;
+//sheet lock : lock sheet: read lock & write lock
+//read : only read for everyone
+//write: others can do nothing
+lock tables [sheet-name] [read|write];
+unlock tables;
+
+
+```
 
 ### 配置文件
 ```

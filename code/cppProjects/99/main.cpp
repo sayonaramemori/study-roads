@@ -101,7 +101,6 @@ private:
 };
 
 
-
 void work(){
     class chess(input);
     chess.InitChess();
