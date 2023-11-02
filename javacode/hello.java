@@ -1,14 +1,16 @@
-class hello{
+public class hello{
     public static void main(String[] args){
-        String str="abc";
         boolean state=true;
-        int num=1;
         System.out.println("Hello world");
-        System.out.println(num + str + state);
-
-        String[] str_list = new String[]{"123","java","cpp"};
-        for(int i=0;i<3;++i){
+        String str_list[] = new String[5];
+        for(int i=0;i<str_list.length;++i){
+            double r = Math.random();
+            System.out.println(r);
             System.out.println(str_list[i]);
         }
+        person temp = new person();
+        System.out.println(temp);
     }
 }
+
+

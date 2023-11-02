@@ -93,11 +93,13 @@ SELECT [FIELD-NAME] FROM [NAME] LIMIT [INDEX],[RECORDS-NUMBER];
 ```
 use mysql;
 select * from user;
-create user 'user-name'@'host-name' identified by 'password';
+create user 'user-name'@'host-name' identified by 'password' [with grant option];
 alter user 'user-name'@'host-name' identified with mysql_native_password by 'new-password';
 drop user'user-name'@'host-name';
+
 //examples
 create user 'sayonara'@'%' identified by '121234';
+update user set host='%' where user = 'root';
 
 show grants for 'user-name'@'host-name';
 //database-name and sheet-name could be matched with *
