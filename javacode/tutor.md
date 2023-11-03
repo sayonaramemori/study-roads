@@ -144,4 +144,15 @@ args[1]: parameters 2
 */
 ```
 
+### Class
+---
+> It is important to realize that an object variable doesn't actually contain an object. It only _refers_ to an object.
+> Behavior like object pointers in C++.
+> In Java, you must use the *clone* method to get a complete copy of an object.
+> No const method in Java.
+---
+
+### 
+
+
 
