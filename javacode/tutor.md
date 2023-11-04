@@ -146,10 +146,12 @@ args[1]: parameters 2
 
 ### Class
 ---
-> It is important to realize that an object variable doesn't actually contain an object. It only _refers_ to an object.
-> Behavior like object pointers in C++.
-> In Java, you must use the *clone* method to get a complete copy of an object.
+> It is important to realize that an object variable doesn't actually contain an object. It only _refers_ to an object.  
+> Behavior like object pointers in C++.  
+> In Java, you must use the *clone* method to get a complete copy of an object.  
 > No const method in Java.
+> The name of the file must match the name of the public class. You can only have one public class in a source file, but you can have any number of nonpublic classes.  
+> 
 ---
 
 ### 
