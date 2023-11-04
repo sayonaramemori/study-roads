@@ -80,7 +80,11 @@ public static void main(String[] args){
         ink k;
         int n; //ERROR -- can't redefine n in inner block
     }
+    public void anyfunc(){
+        int n; //OK, shadow the instance fields with the same name
+    }
 }
+
 ```
 ---
 > In C++, it is possible to redefine a variable inside a nested block. The inner definition the shadows the outer one. This can be source of programming errors; hence, Jave does not allow it.
@@ -93,7 +97,8 @@ public static void main(String[] args){
 
 ### Auto deduce
 ---
-> var is the same as auto keyword in C++
+> var is the same as auto keyword in C++  
+> Note that the `var` keywork can only be used with *local* variables inside methods.
 ---
 
 ### toString Funtion
@@ -146,15 +151,29 @@ args[1]: parameters 2
 
 ### Class
 ---
-> It is important to realize that an object variable doesn't actually contain an object. It only _refers_ to an object.  
-> Behavior like object pointers in C++.  
-> In Java, you must use the *clone* method to get a complete copy of an object.  
-> No const method in Java.
-> The name of the file must match the name of the public class. You can only have one public class in a source file, but you can have any number of nonpublic classes.  
-> 
+1. It is important to realize that an object variable doesn't actually contain an object. It only _refers_ to an object.  
+2. .  
+3. In Java, you must use the *clone* method to get a complete copy of an object.  
+4. No const method in Java.
+5. The name of the file must match the name of the public class. You can only have one public class in a source file, but you can have any number of nonpublic classes.  
+6. You can think of the Java compiler as having the `make` functionality already built in.  
+7. Object Parameters can be `null`, so ask yourself whether you really intent to model values that can be present or absent.If not, the "tough love" approach is preferred.  
+8. As a rule of thumb, always use `clone` whenever you need to return a copy of a mutable field.  
+9. C++ has the same rule. A method can access the private features of any object of its class, not just of the implicit parameter.
 ---
 
+### Constructor
+```C++
+//Constructors work the same way in Java as they do in C++.
+//Kepp in mind, however, that all Java objects are constructed 
+//on the heap and that a constructor must be combined with `new`.
+//It is a common error of C++ programmers to forget the `new` operator:
+Employee number007("jesus",1990); //C++, not Java
+//That works in C++ but not in Java.
+```
+
 ### 
+
 
 
 
