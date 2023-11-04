@@ -153,7 +153,7 @@ args[1]: parameters 2
 ---
 1. It is important to realize that an object variable doesn't actually contain an object. It only _refers_ to an object.  
 2. .  
-3. In Java, you must use the *clone* method to get a complete copy of an object.  
+3. In Java, you must use the `*clone*` method to get a complete copy of an object.  
 4. No const method in Java.
 5. The name of the file must match the name of the public class. You can only have one public class in a source file, but you can have any number of nonpublic classes.  
 6. You can think of the Java compiler as having the `make` functionality already built in.  
@@ -172,7 +172,15 @@ Employee number007("jesus",1990); //C++, not Java
 //That works in C++ but not in Java.
 ```
 
-### 
+### Final on object
+---
+> The same as the top const in C++.
+---
+
+### Static Fields
+
+
+
 
 
 
