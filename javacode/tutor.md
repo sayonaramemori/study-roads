@@ -152,7 +152,7 @@ args[1]: parameters 2
 ### Class
 ---
 1. It is important to realize that an object variable doesn't actually contain an object. It only _refers_ to an object.  
-2. .  
+2. Every class can have a `main` method. That is a handy trick for unit testing of classes.     
 3. In Java, you must use the `*clone*` method to get a complete copy of an object.  
 4. No const method in Java.
 5. The name of the file must match the name of the public class. You can only have one public class in a source file, but you can have any number of nonpublic classes.  
@@ -163,6 +163,10 @@ args[1]: parameters 2
 ---
 
 ### Constructor
+1. If you don't set a field explicitly in a constructor, it is automatically set to default value: numbers to 0, boolean values to false, and object references to null.  
+2. C++ uses special initializer list syntax to call field constructors. In java there is no need for that because objects have no subobjects, only pointers to other objects.  
+3. If the first statement of a constructor has the form `this(...)`, then the constructor calls another constructor of the same class. The same as the work of delegating constructor in C++.
+
 ```C++
 //Constructors work the same way in Java as they do in C++.
 //Kepp in mind, however, that all Java objects are constructed 
@@ -172,12 +176,60 @@ Employee number007("jesus",1990); //C++, not Java
 //That works in C++ but not in Java.
 ```
 
+#### Initialization Blocks
+> There is a third mechanism in Java. Class declarations can contain arbitrary blocks of code. These blocks are executed firstly whenever an object of that class is constructed.
+```java
+class Employee{
+    private int id;
+    private String name;
+    private double salary;
+    //object initialization blocks
+    {
+        salary=1000;
+    }
+}
+```
+
+#### Orders of the construction
+1. If the first line of constructor calls a second constructor, then the second constructor executes with the provided arguments.  
+2. Otherwise,  
+    1. All data fields are initialized to their default values.(0,false or null).
+    2. All field initializers and initialization blocks are executed, in the order in which they occur in the class declaration.  
+3. The body of the constructor is executed.
+
+#### Specially for static filed
+> To initialize a static field, either supply an inital value or use a static initialization block. 
+```
+//Static initialization occurs when the class is first loaded.
+public static int nextid;
+static
+{
+    var generator = new Random();
+    nextid = generator.nextInt(1000);
+}
+```
+
+### Static Fields
+> We recommend that you use class names, not objects, to invoke static methods. Static fields and methods have the same functionality in Java and C++. However, the syntax is slightly different. In C++, you use the :: operator to access a staitc field or method outside its scope, such as Math::PI.
+
+
 ### Final on object
 ---
 > The same as the top const in C++.
 ---
 
-### Static Fields
+### Method Parameters
+> Primitive types are passed by value.  
+> Object references are passed by value.  
+1. A method cannot modify a parameter of a primitive type(that is, numbers or boolean values).
+2. A method can change the state of an object parameter.
+3. A method cannot make an object parameter refer to a new object.
+
+### Package
+> Its works similarly to namespace in C++.
+
+
+
 
 
 
