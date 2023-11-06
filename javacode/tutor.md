@@ -227,6 +227,63 @@ static
 
 ### Package
 > Its works similarly to namespace in C++.
+> `import` directive is the same as `using` in C++.
+
+#### Addition of a class into a Package
+> Put the name of the package at the top of your source file, before the code that defines the classes int the package.
+> You should compile and execute at project directory and specify the package name which corresponds to their subdirectory.
+
+#### Package Access  
+|Key word|Scope|
+|:---|:----|
+|public|Any class|
+|nothing|Package|
+|private|Class defining them|
+
+
+#### Class Importation
+```java
+java.time.LocalDate today = java.time.LocalDate.now();
+import java.time.*;
+//Then you can use
+LocalDate today = LocalDate.now();
+//However, note that you can only use the * notation to import a single package. You cannot use import java.* or import java.*.* to import all packages with the java prefix.
+//Suppose you write a program that imports both packages.
+import java.util.*;
+import java.sql.*;
+//If you now use the Date class, you get a compile-time error:
+Date today; //Error  -- java.util.Date or java.sql.Date?
+//You can solve this problem by adding a specific import statement, or use the full package name with every class name.
+import java.util.*;
+import java.sql.*;
+import java.util.Date;
+var deadline = new java.util.Date();
+var today = new java.sql.Date(...);
+```
+
+#### Static Imports
+> A form of the `import` statement permits the importing of static methods and fields, not just classes.
+```java
+import static java.lang.System.*;
+out.println("Hello world");
+```
+
+---
+#### jar
+---
+
+---
+### Comments for documents
+---
+
+
+
+### Inheritance
+```
+
+```
+
+
 
 
 
