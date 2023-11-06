@@ -26,7 +26,7 @@ if(x=0){...}
 int i = 10;
 //is a definition, whereas
 extern int i;
-is a declaration. In java, no declararion are separate from definitions.
+//is a declaration. In java, no declararion are separate from definitions.
 ```
 
 ### Constants
@@ -227,6 +227,7 @@ static
 
 ### Package
 > Its works similarly to namespace in C++.
+
 
 
 
