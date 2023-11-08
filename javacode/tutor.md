@@ -279,9 +279,59 @@ out.println("Hello world");
 
 
 ### Inheritance
+1. Inheritance is similar in Java and C++. Java uses the extends keyword instead of the : token. All inheritance in Java is public inheritance;
+2. there is no analog to the C++ features of private and protected inheritance.
+3. Every method except constructor can be overrided, but using virtual keyword in C++ to override.
+4. Overloading functions is be inherited and overriding is unlike C++ which shadows the all functions with the same name in C++.
+
+```java
+public class Manager extends Employee{
+    @override
+    private bonus;
+    public double getSalary(){
+        //use super to call the superclass method in overriding functions while C++ uses the :: operator.
+        double baseSalary = super.getSalary();  
+        return baseSalary + bonus;
+    }
+}
 ```
 
+#### Subclass Constructors
+```java
+//If the subclass constructor does not call a superclass constructor explicitly, the no-argument constructor of the superclass is invoked. If the superclass does not have a no-argument constructor
+//and the subclass constructor does not call another superclass constructor explicitly, the Java compiler reports an error.
+public Manager(String name, double salary){
+    //A bit of difference from C++
+    //Must be the first statement.
+    super(name,salary);
+    bonus = 0;
+}
+
+//It is legal to convert this array to an Employee[] array:
+Manager managers[] = new Manager[10];
+Employee staff[] = managers; //Ok;
 ```
+
+#### Override in Inheritance
+> When you override a method, the subclass method must be at least as visible as the superclass method the same as C++.
+> If the superclass is public, the subclass method must also be declared public.
+
+
+#### Prevent Inheritance
+```
+public final class Executive extends Manager{
+...
+}
+```
+
+
+
+
+
+
+
+
+
 
 
 

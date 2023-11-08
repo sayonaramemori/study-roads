@@ -4,12 +4,11 @@ import temp.foobar.*;
 
 public class administrator{
     public static void main(String[] args){
-        var a = new person();
-        System.out.println(a);
-        a.show_msg();
-        out.println(Math.sqrt(2));
-        test.show();
-        test_access.show();
+        father f = new father();
+        son s = new son();
+        f.show(1);
+        s.show(1);
+        s.show("HHH");
     }
 }
 
@@ -41,4 +40,17 @@ class person{
     }
 }
 
+class father{
+    public void show(int a){
+        out.println("father is number " + a);
+    }
+    public void show(String s){
+        out.println("father string is " + s);
+    }
+}
 
+class son extends father{
+    public void show(int a){
+        out.println("son is number" + a);
+    }
+}
