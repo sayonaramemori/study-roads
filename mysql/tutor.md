@@ -105,6 +105,7 @@ show grants for 'user-name'@'host-name';
 //database-name and sheet-name could be matched with *
 grant [privilege] on database.sheet_name to 'user-name'@'host-name';
 revoke [privilege] on database.sheet_name to 'user-name'@'host-name';
+flush privileges;
 ```
 ![userPrivileges](./user_privileges.jpg)
 

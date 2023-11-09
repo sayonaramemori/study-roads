@@ -8,6 +8,7 @@ static void msg(const std::string& str){
     std::cout<<str<<std::endl;
     exit(-1);
 }
+
 class reader{
 public:
     int size()const{return content.size();}
