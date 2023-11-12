@@ -47,7 +47,7 @@ public class Constants
 > To yield reproducible results.
 ---
 ```
-cublic static strictfp void main(String args[]){}
+public static strictfp void main(String args[]){}
 ```
 
 ### Enumerated Types
@@ -68,7 +68,7 @@ Size s = Size.medium;
 
 ### Strings are immutable
 1. The compiler can arrange that strings are shared
-2. The designers of Java decided that the efficiency of sharing outweighs the inefficiency of string editing by extracting substrings and cconcatenating.
+2. The designers of Java decided that the efficiency of sharing outweighs the inefficiency of string editing by extracting substrings and concatenating.
 3. However, C++ strings are mutable - you can modify individual characters in a string.
 4. Do not use the == operator to test whether two strings are equal. It only determines whether or not the strings are stored in the same location.
 
@@ -87,7 +87,7 @@ public static void main(String[] args){
 
 ```
 ---
-> In C++, it is possible to redefine a variable inside a nested block. The inner definition the shadows the outer one. This can be source of programming errors; hence, Jave does not allow it.
+> In C++, it is possible to redefine a variable inside a nested block. The inner definition shadows the outer one. This can be source of programming errors; hence, Jave does not allow it.
 ---
 
 ### Operator Overload
@@ -157,7 +157,7 @@ args[1]: parameters 2
 4. No const method in Java.
 5. The name of the file must match the name of the public class. You can only have one public class in a source file, but you can have any number of nonpublic classes.  
 6. You can think of the Java compiler as having the `make` functionality already built in.  
-7. Object Parameters can be `null`, so ask yourself whether you really intent to model values that can be present or absent.If not, the "tough love" approach is preferred.  
+7. Object Parameters can be `null`, so ask yourself whether you really intend to model values that can be present or absent.If not, the "tough love" approach is preferred.  
 8. As a rule of thumb, always use `clone` whenever you need to return a copy of a mutable field.  
 9. C++ has the same rule. A method can access the private features of any object of its class, not just of the implicit parameter.
 ---
@@ -172,7 +172,9 @@ args[1]: parameters 2
 //Kepp in mind, however, that all Java objects are constructed 
 //on the heap and that a constructor must be combined with `new`.
 //It is a common error of C++ programmers to forget the `new` operator:
+
 Employee number007("jesus",1990); //C++, not Java
+
 //That works in C++ but not in Java.
 ```
 
@@ -238,6 +240,7 @@ static
 |:---|:----|
 |public|Any class|
 |nothing|Package|
+|protected|Field:Package,Method:subclass|
 |private|Class defining them|
 
 
@@ -279,10 +282,9 @@ out.println("Hello world");
 
 
 ### Inheritance
-1. Inheritance is similar in Java and C++. Java uses the extends keyword instead of the : token. All inheritance in Java is public inheritance;
-2. there is no analog to the C++ features of private and protected inheritance.
-3. Every method except constructor can be overrided, but using virtual keyword in C++ to override.
-4. Overloading functions is be inherited and overriding is unlike C++ which shadows the all functions with the same name in C++.
+1. Inheritance is similar in Java and C++. Java uses the extends keyword instead of the : token. All inheritance in Java is public inheritance;there is no analog to the C++ features of private and protected inheritance.
+2. Every method except constructor can be overrided,while using virtual keyword in C++ to override.
+3. Overloading functions is be inherited and overriding is unlike C++ which shadows the all functions with the same name in C++.
 
 ```java
 public class Manager extends Employee{
@@ -319,25 +321,114 @@ Employee staff[] = managers; //Ok;
 
 #### Prevent Inheritance
 ```
+//All methods in a final class are automatically final, not the fields.
 public final class Executive extends Manager{
 ...
 }
+//You can also make a specific method in a class final.
+public class Employee
+{
+    public final String getName()
+    {
+        ...;
+    }
+}
 ```
 
+### Casting
+```java
+double x = 3.04;
+int nx = (int) x;
+//The same as the dynamic_cast<Type*> in C++.
+//It is best to minimize the use of the casts and the instanceof operator.
+if(staff[0] instanceof Manager)
+    Manager boss = (Manager) staff[0]; //staff[0] is type of Employee;
+//The test x instanceof OBJECT
+//does not generate an exception if x is null.
+```
 
+### Abstract class
+> In C++, there is no special keyword to denote abstract classes.
+```
+public abstract class Person
+{
+    private String name;
+    public Person(String name){
+        this.name = name;
+    }
+    //Abstract methods act as placeholders for methods that are implemented in the subclass.
+    public abstract String getDescription();
+    public String getName(){
+        return name;
+    }
+}
+//Abstract classes cannot be instantiated.But you can refer to a subclass which is the same as C++. For example,
+Person p = new Student(..);
+```
 
+### Object: The Cosmic Superclass
+> In C++, there is no cosmic root class. However, every pointer can be convert to a void* pointer.
 
+#### The equals Method
+> The same as operator== in C++.  
+```
+public class Employee
+{
+    @Override
+    public boolean equals(Object otherObject)
+    {
+        if(this==otherObject)return true;
+        if(otherObject==null)return false;
+        if(getClass() != otherObject.getClass())
+            return false;
+        Employee ohter = (Employee) otherObject;
+        return name.equals(other.name)&&salary==other.salary&&hireDay.equals(other.hireDay);
+    }
+}
+//when you define the equals method for a subclass, first call equals on the superclass.
+public class Manager extends Employee
+{
+    @Override
+    public boolean equals(Object otherObj)
+    {
+        if(!super.equals(otherObj))return false;
+        ...
+    }
+}
+```
 
+#### The hashCode Method
+> A hash code is an integer that is derived from an object's memory address.
+> If you redefine the equals method, you will also to redefine the hashcode method for objects that users might insert into a hash table.
+```
+vas s = "ok";
+var t = new String(s);
+//s and t have the same hash code.
+```
 
+#### The toString Method
+> Whenever an object is concatenated with a string by the `+` operator, the Java compiler automatically invokes the to String method to obtain a string representation of the object.
 
+#### Generic Array Lists
+> The same as the `std::vector` in C++.  
+```java
+//Initialization
+ArrayList<Type> name = new ArrayList<Employee>();
+var name = new ArrayList<Employee>();
+ArrayList<Employee> staff = new ArrayList<>();
+ArrayList<Employee> staff = new ArrayList<>(int size); //without allocating, do not apply set method
+//method
+boolean staff.add(new Employee());       //push_back;
+staff.add(int index, value);             //insert;
+Element staff.remove(int index);         //erase;
+void staff.ensureCapacity(100);          //ensure the storage without reallocating its internal storage array.
+int staff.size();                        //equal to array.length;
+void staff.trimToSize();                 //The garbage collector will reclaim any excess memory.
+staff.set(int index, var value);         //The same as operator[] in C++
+staff.get(int index);
+```
 
-
-
-
-
-
-
-
+### Object Wrappers and Autoboxing
 
 
 
