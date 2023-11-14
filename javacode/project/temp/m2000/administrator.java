@@ -2,6 +2,20 @@ package temp.m2000;
 import static java.lang.System.*;
 import temp.foobar.*;
 
+interface socket
+{
+    double getCircle();
+    double pi = 3.14;
+}
+
+class line implements socket
+{
+    @Override 
+    public double getCircle(){
+        return 99.0*pi;
+    }
+}
+
 public class administrator{
     public static void main(String[] args){
         father f = new father();
@@ -9,6 +23,8 @@ public class administrator{
         f.show(1);
         s.show(1);
         s.show("HHH");
+        var a = new line();
+        out.println(a.getCircle());
     }
 }
 

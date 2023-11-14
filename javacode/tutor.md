@@ -432,7 +432,85 @@ staff.get(int index);
 
 
 
+### Reflection
 
+
+### Interface
+> An interface is not a class but a set of requirements for the classes that want to comform to the interface.  
+> All methods of an interface are automatically `public`. For that reason, it is not necessary to supply the keyword `public` when declaring a method in an interface and field is always `public static final`.
+> You can think of an interface as an abstract class with no instance fields.
+> You can never use the new operator to instantiate an interface. However, you can declare interface variables refering to an object of a class that implements the interface;
+
+```java
+public interface Comparable
+{
+    int compareTo(Object other);        //public
+    double pi = 3.14156;                //public static final
+}
+if(anObj instanceof Comparable){...}
+public interface UniverseComp extends Comparable
+{
+    ...
+}
+//multiple implements
+class Employee implements Cloneable, Comparable
+{
+    ...
+}
+//add static methods to interface
+public interface Path
+{
+    public static Path of(URL url){....}
+}
+```
+
+#### Default methods for interface
+> You can never make a default method that redefines one of the methods in the `Object` class.
+> what happens if the exact same method is defined as default method in one interface and then again as a method of a superclass or another interface?  
+
+1. Superclasses win. If a superclass provides a concrete method, default methods with the same name and parameters types are simply ingnored.
+2. Interface clash. If an interface provides a default method, and another interface contains a method with the same name and parameter types, then you must resolve the conflict by overriding that method.
+
+```java
+public interface Interator<E>
+{
+    boolean hasNext();
+    E next();
+    default void remove(){throw new UnsupportedOperationException("remove");}
+}
+//for situation 1
+class Student extends Person implements Named{...}
+//for situation 2
+interface Person
+{
+    default String getName(){...}
+}
+interface Named
+{
+    default String getName(){...}
+}
+class Student implements Person, Named{...}
+```
+
+### Object Cloning
+> The same as Object(const Object&) and operator=(const Object&) in C++.
+> The method is a protected method of Object. You must redefine `clone` to be public to allow objects to be cloned by any method.
+> To make a deep copy that clones the subobjects.
+```
+class Employee implements Cloneable
+{
+    public Employee clone() throws CloneNotSupportException
+    {
+        Employee cloned = (Employee) super.clone();
+        //Only when the clone is implemented by hireDay, statements below is valid;
+        cloned.hireDay = (Date) hireDay.clone();
+        return cloned;
+    }
+}
+```
+
+
+### Lambda Expression
 
 
 
