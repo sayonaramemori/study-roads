@@ -1,6 +1,26 @@
 ### 安装kepserver
-> 见安装包内说明
 
-### kepserver连接plc
-> 以S7-200 smart 为例
-1. 
+
+---
+## PLC to Database
+---
+> 以S7-200 smart 和 MySQL 为例。
+
+### kepserver读PLC
+---
+#### 读取plc指定变量地址
+
+
+#### kepserver写数据库
+
+
+---
+## Database to PLC
+---
+
+### kepserver读数据库
+
+### kepserver写PLC
+
+
+### Some bugs

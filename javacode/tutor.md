@@ -511,6 +511,10 @@ class Employee implements Cloneable
 
 
 ### Lambda Expression
+```
+(String first, String second)
+    -> first.length() - second
+```
 
 
 

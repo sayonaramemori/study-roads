@@ -1,3 +1,18 @@
+### Install mysql on Ubuntu
+```shell
+#Enter below in terminal orderly.
+sudo apt update;
+sudo apt install mysql-server;
+sudo mysql_secure_installation;
+```
+
+### Configuration for access remotely
+1. `cd /etc/mysql/mysql.conf.d`
+2. `sudo vim mysqld.cnf`
+3. `bind-address = 0.0.0.0`
+4. `<ESC>:wq` to exit vim editor
+5. `systemctl restart mysql.service`
+
 ### DDL-database
 ```mysql
 SHOW DATABASES;
