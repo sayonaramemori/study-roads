@@ -93,6 +93,9 @@ git branch -d [branch-name] //删除分支
 
 ```
 
+## 上传大文件
+> 使用[lfs](https://github.com/git-lfs/git-lfs)
+
 ## 使用不同的ssh-key读写仓库  
 ```
 git remote add [name] git@[alias]:sayonaramemori/study-roads.git
