@@ -66,14 +66,35 @@
 ## Database to PLC  
 
 ### kepserver 读数据库
-
-
+1. 右键连接性，新建通道，通道类型为 ODBC Client。
+2. 下一步至这个界面，选择配置好的 DSN ，填入相应的用户名和密码。
+    ![dsn-again](./img/dsn_again.png)
+3. 通道建立完成后点击添加设备，型号为MySQL。
+    ![xinghao](./img/xinghao.png)
+4. 下一步至该界面，选择要读取的表。
+    ![read-sheet](./img/table_selection.png)
+5. 下一步至完成，可以看到成功读取到了数据库的内容。
+    ![reading-db](./img/reading_db.png)
 
 ### kepserver 写 PLC
-
+> 下面，将数据库里读到的值写入 PLC，这是一个传达指令的指令表。如下图所示：
+    ![instruction](./img/instruction_sheet.png)
+1. 按照上述步骤将数据库的内容读取到 kepserver，即下图的 instruction 标记,并将标记sp绑定到 PLC 的 VD104, 通过 OPC 确认是否读取成功。
+    ![instruction_sp](./img/instruction_sp.png)
+    ![bind-sp](./img/bind_sp.png)
+2. 点击 Advanced Tags, 然后右键点击 New Link Tag, 如下图所示：
+    ![link-tag](./img/link_tag.png)
+3. 选择从数据库读入的变量，指定输入和输出变量，即 instruction 为输入，sp 为输出，即可完成从数据库到 PLC 的变量映射,如下图所示：
+    ![select-variable](./img/select_variable.png)
+    ![to-plc](./img/to_plc.png)
+4. 创建完成后自动启动，我们测试一下，是否能从数据库将数据写入 PLC:
+    更改前：
+    ![pre](./img/pre.png)
+    更改后：
+    ![later](./img/lat.png)
 
 
 ### Some bugs
 1. 起始记录的数据可能为零，即脏数据。
-2. PLC 运行停机再运行的情况下，kepserver 中一些 tags 可能需要手动重启。
+2. PLC 运行停机再运行的情况下，kepserver 中一些 tags 可能需要手动重启, 如 Advanced tags。
 
