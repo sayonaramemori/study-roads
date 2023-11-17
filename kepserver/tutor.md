@@ -34,9 +34,33 @@
         ![odbc](./img/ODBC.png)
     2. 点击系统 DSN，并添加驱动，如下图，如果未找到所需的驱动，请去相应的官网下载。MySQL的驱动[下载](https://dev.mysql.com/downloads/connector/odbc/), MSI Installer(32-bit)。
         ![odbc-config](./img/odbc_driver.png)
-    3. 点击确认后，会弹出如下界面，填入数据源名称，数据库IP，数据库的用户名和相应的密码并测试连接后，指定一个已经存在的数据库名。在终端中查看本地IP，在Windows中键入ipconfig，在Linux中键入ifconfig即可查看本地IP地址。
-        ![get ip](./img/get_ip.png)
+    3. 点击确认后，会弹出如下界面，填入数据源名称，数据库IP，数据库的用户名和相应的密码并测试连接后，指定一个已经存在的数据库名，若不指定将报错。
         ![data source](./img/connect_database.png)
+        在终端中查看本地IP，在Windows中键入ipconfig，在Linux中键入ifconfig即可查看本地IP地址。
+        ![get ip](./img/get_ip.png)
+    4. 配置成功后，再回到新建的 log group 中，选择刚刚配好的 DSN 即可。
+        ![comfirm-dsn](./img/comfirm_dsn.png)
+3. General 界面配置如下参数即可。
+    ![general](./img/general.png)
+4. 转到下一个界面，Data Map 界面，点击 browse, 添加需要监测的变量。
+    ![add-tag](./img/add_tag.png)
+    1. Table selection 选项以第三项为例，即创建一个新的 data-sheet, 并取名为 test
+    ![test](./img/test.png)
+    2. Table format 我们以第二项为例，即 wide 模式。然后点击 Map Fields .
+    ![map-set](./img/map_set.png)
+    3. 可以看到表的字段名冗长，我们选中其中的温度字段，点击 Modify 修改字段名称为 temperature.
+    ![ch-f-name](./img/change_format_name.png)
+    4. Process Item Map 的第一列是我们真正写入数据库的变量，第二列是绑定的字段名。选择测量温度的变量，点击 link，可以和下面选中的字段进行绑定，点击 clear 即解除绑定。这里我们仅仅保留时间戳和温度值两项。
+    ![time_value](./img/time_value.png)
+
+5. 然后转到触发器界面。这里我们直接修改默认的触发器，并更改记录的时间间隔。如下图。
+    ![trigger](./img/trigger.png)
+6. 点击Data Logger 外的其他选项触发保存。保存完毕后 log group 会自动运行并在 kepserver 最底下输出日志。这里可以看到连接成功了。
+    ![log](./img/log.png)
+8. 查看数据库的数据确认是否写入成功，可以直接通过终端登入 MySQL 或者通过其他软件查看，这里以 Navicat 软件为例。这里可以看到我们指定的字段写入成功了。
+    ![database](./img/database.png)
+
+
 
 
 ## Database to PLC  
