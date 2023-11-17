@@ -89,12 +89,12 @@ Contents
 ### kepserver 写PLC
 > 下面，将数据库里读到的值写入 PLC，这是一个传达指令的指令表。如下图所示：
     ![instruction](./img/instruction_sheet.png)
-1. 按照上述步骤将数据库的内容读取到 kepserver，即下图的 instruction 标记,标记 sp 读取的是 PLC 的 VD104, 通过 OPC 确认是否读取成功。
+1. 按照上述步骤将数据库的内容读取到 kepserver，即下图的 instruction 标记,而标记 sp 读取的是 PLC 的 VD104, 通过 OPC 确认是否读取成功。
     ![instruction_sp](./img/instruction_sp.png)
     ![bind-sp](./img/bind_sp.png)
 2. 点击 Advanced Tags, 然后右键点击 New Link Tag, 如下图所示：
     ![link-tag](./img/link_tag.png)
-3. 选择从数据库读入的变量，指定输入和输出变量，即 instruction 为输入，sp 为输出，即可完成从数据库到 PLC 的变量映射,如下图所示：
+3. 选择从数据库读入的变量，指定输入和输出变量，即从数据库读入的 instruction 为输入，而与 PLC 绑定的 sp 为输出，即可完成从数据库到 PLC 的变量映射,如下图所示：
     ![select-variable](./img/select_variable.png)
     ![to-plc](./img/to_plc.png)
 4. 创建完成后自动启动，我们测试一下，是否能从数据库将数据写入 PLC:
