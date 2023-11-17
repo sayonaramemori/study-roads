@@ -79,7 +79,7 @@
 ### kepserver 写 PLC
 > 下面，将数据库里读到的值写入 PLC，这是一个传达指令的指令表。如下图所示：
     ![instruction](./img/instruction_sheet.png)
-1. 按照上述步骤将数据库的内容读取到 kepserver，即下图的 instruction 标记,并将标记sp绑定到 PLC 的 VD104, 通过 OPC 确认是否读取成功。
+1. 按照上述步骤将数据库的内容读取到 kepserver，即下图的 instruction 标记,标记 sp 读取的是 PLC 的 VD104, 通过 OPC 确认是否读取成功。
     ![instruction_sp](./img/instruction_sp.png)
     ![bind-sp](./img/bind_sp.png)
 2. 点击 Advanced Tags, 然后右键点击 New Link Tag, 如下图所示：
@@ -92,6 +92,7 @@
     ![pre](./img/pre.png)
     更改后：
     ![later](./img/lat.png)
+    至此，我们完成了从数据库到 PLC 的写操作。
 
 
 ### Some bugs
