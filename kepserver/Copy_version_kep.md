@@ -9,13 +9,12 @@ Contents
         - [kepserver 读数据库](#kepserver-读数据库)
         - [kepserver 写PLC](#kepserver-写plc)
 - [Some bugs](#some-bugs)
----
 
 # 安装 kepserver
 > 资料和[手册](./使用手册)  
 1. 点击[下载kepserver](./安装包/kepserver.zip)  
 2. 安装后打开安装目录，将破解补丁复制替换即可,注意要先 kill kepserver 进程。
----
+
 # PLC interacts with Database
 > 以S7-200 smart 和 MySQL 为例。
 
@@ -38,9 +37,7 @@ Contents
 7. 点击导航栏上的工具，启动 OPC Client 即可查看对应的静态标记是否读取成功。如下图所示，我们成功读取到了实际温度。
     ![test-read](./img/test_read.png)
 
----
 ### kepserver 写数据库
----
 1. 右键 Date Logger, 新建 log group  
 2. 配置 DSN：
     1. 在Windows 菜单栏里搜索 ODBC，如下图所示，注意是32bit，以管理员身份运行。
