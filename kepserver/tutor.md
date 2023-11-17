@@ -49,7 +49,7 @@
     2. Table format 我们以第二项为例，即 wide 模式。然后点击 Map Fields .
     ![map-set](./img/map_set.png)
     3. 可以看到表的字段名冗长，我们选中其中的温度字段，点击 Modify 修改字段名称为 temperature.
-    ![ch-f-name](./img/change_format_name.png)
+    ![ch-f-name](./img/change_field_name.png)
     4. Process Item Map 的第一列是我们真正写入数据库的变量，第二列是绑定的字段名。选择测量温度的变量，点击 link，可以和下面选中的字段进行绑定，点击 clear 即解除绑定。这里我们仅仅保留时间戳和温度值两项。
     ![time_value](./img/time_value.png)
 
@@ -58,7 +58,7 @@
 6. 点击Data Logger 外的其他选项触发保存。保存完毕后 log group 会自动运行并在 kepserver 最底下输出日志。这里可以看到连接成功了。
     ![log](./img/log.png)
 8. 查看数据库的数据确认是否写入成功，可以直接通过终端登入 MySQL 或者通过其他软件查看，这里以 Navicat 软件为例。这里可以看到我们指定的字段写入成功了。
-    ![database](./img/database.png)
+    ![database](./img/navicat.png)
 
 
 
