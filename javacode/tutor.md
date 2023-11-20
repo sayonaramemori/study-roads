@@ -448,6 +448,8 @@ public interface Comparable
     double pi = 3.14156;                //public static final
 }
 if(anObj instanceof Comparable){...}
+
+//mix the two interface
 public interface UniverseComp extends Comparable
 {
     ...
@@ -511,10 +513,27 @@ class Employee implements Cloneable
 
 
 ### Lambda Expression
-```
+> The return type is auto deduced. It is illegal to return a value in some branches but not in others.
+```java
+//example
 (String first, String second)
-    -> first.length() - second
+    -> {first.length() - second;}
+//no parameters
+LocalDate hireDay = Objects.requireNonNullOrElseGet(day,()->new LocalDate(1970,1,1));
+//Only one parameters
+evet -> {....}
+//In fact, conversion to a functional interface is the only thing that you can do with lambda expression.
+BitFunction<String,String,Integer> comp = (first,second) -> first.length() - second.length();
+//In a lambda experssion, ;
 ```
+
+### Method References
+> Sometimes, a lambda expression involves a single method. It is nicer to use *method reference*.
+```java
+var timer = new Timer(1000,System.out::println);
+```
+
+
 
 
 
