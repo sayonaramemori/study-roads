@@ -1,3 +1,7 @@
+---
+# Volume I
+---
+
 ## To find the difference from C++
 ### Basic Type
 > No unsigned version
@@ -534,6 +538,11 @@ var timer = new Timer(1000,System.out::println);
 ```
 
 
+### Inner class
+
+---
+# Volume II 
+---
 
 
 
