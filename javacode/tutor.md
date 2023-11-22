@@ -239,6 +239,11 @@ static
 > Put the name of the package at the top of your source file, before the code that defines the classes int the package.
 > You should compile and execute at project directory and specify the package name which corresponds to their subdirectory.
 
+```java
+javac com/mycompany/PayrollApp.java
+java com.mycompany.PayrollApp
+```
+
 #### Package Access  
 |Key word|Scope|
 |:---|:----|
@@ -278,6 +283,10 @@ out.println("Hello world");
 ---
 #### jar
 ---
+```
+java -classpath $path1:.:$path2 myprog
+set CLASSPATH=...:.:...
+```
 
 ---
 ### Comments for documents
@@ -518,10 +527,12 @@ class Employee implements Cloneable
 
 ### Lambda Expression
 > The return type is auto deduced. It is illegal to return a value in some branches but not in others.
+> It only captures the unchanged variable.
+> The point of using lambdas is *deferred* execution.
 ```java
 //example
 (String first, String second)
-    -> {first.length() - second;}
+    -> {first.length() - second.length();}
 //no parameters
 LocalDate hireDay = Objects.requireNonNullOrElseGet(day,()->new LocalDate(1970,1,1));
 //Only one parameters
@@ -531,14 +542,24 @@ BitFunction<String,String,Integer> comp = (first,second) -> first.length() - sec
 //In a lambda experssion, ;
 ```
 
-### Method References
+### Method Reference
+> With three ways:  
+    1. object::instanceMethod  
+    2. Class::instanceMethod  
+    3. Class::staticMethod  
+    
 > Sometimes, a lambda expression involves a single method. It is nicer to use *method reference*.
 ```java
 var timer = new Timer(1000,System.out::println);
+//constructor reference
+ArrayList<String> names = ...;
+Stream<Person> stream = names.stream().map(Person::new);
+Person[] people = stream.toArray(Person[]::new);
 ```
 
 
 ### Inner class
+> 
 
 ---
 # Volume II 
