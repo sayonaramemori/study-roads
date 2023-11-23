@@ -1,0 +1,5 @@
+map v $vim $fx
+map . set hidden!
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+map x $rm $fx -rvi
+set scrolloff 20
