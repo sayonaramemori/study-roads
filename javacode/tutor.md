@@ -524,7 +524,9 @@ LocalDate hireDay = Objects.requireNonNullOrElseGet(day,()->new LocalDate(1970,1
 evet -> {....}
 //In fact, conversion to a functional interface is the only thing that you can do with lambda expression.
 BitFunction<String,String,Integer> comp = (first,second) -> first.length() - second.length();
-//In a lambda experssion, ;
+//In a lambda experssion, you can only reference variables whose value doesn't change.
+//The body of a lambda expression has the same scope as a nested block. The same rules for name conflicts and shadowing apply.
+//use this parameter
 ```
 
 ### Method References
@@ -533,7 +535,9 @@ BitFunction<String,String,Integer> comp = (first,second) -> first.length() - sec
 var timer = new Timer(1000,System.out::println);
 ```
 
+### Processing lambda expression
 
+### 
 
 
 
