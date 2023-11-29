@@ -11,6 +11,9 @@
 #### some examples
 > `wsl -l -v`
 > `wsl --help`
+> `wsl --export <Distri> <Path-to-store>`
+> `wsl --import <New-Name> <Installation-DIR> <Path-exported-Package>`
+> `wsl --unregister <Distri>`
 
 
 ### 扫描局域网ip
