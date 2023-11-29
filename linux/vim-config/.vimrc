@@ -19,13 +19,13 @@ set cmdheight=2
 set autochdir
 set showcmd
 set showmode
-"set ruler
+set ruler
 
 set wildmenu
 set autoindent
 set smartindent
 
-set list 
+"set list 
 "set listchars=tab:▸\ ,trail:▫
 set scrolloff=5
 set timeout timeoutlen=300 ttimeoutlen=100
@@ -70,7 +70,8 @@ nnoremap <leader>ta :TagbarToggle<CR>
 nnoremap <leader><leader> :source ~/.vimrc<CR>
 "inoremap { {<CR><CR>}<ESC>kcc
 " Mapping for C and C++ header files
-autocmd FileType cpp,c,java inoremap <buffer> { {<CR><CR>}<ESC>kcc
+autocmd FileType cpp,c inoremap <buffer> { {<CR><CR>}<ESC>kcc
+autocmd FileType java inoremap <buffer> { {<CR><CR>}<ESC>kcc
 
 inoremap { {}<ESC>i
 inoremap [ []<ESC>i
@@ -86,11 +87,12 @@ Plug 'preservim/nerdcommenter'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
+Plug 'iamcco/markdown-preview.nvim'
 Plug 'connorholyday/vim-snazzy'
 Plug 'rafi/awesome-vim-colorschemes'
 call plug#end()
+
 "Plug 'ludovicchabant/vim-gutentags'
-"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 ""colorschem snazzy
 colorschem abstract
 
