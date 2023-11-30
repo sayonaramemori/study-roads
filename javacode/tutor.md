@@ -563,11 +563,16 @@ Person[] people = stream.toArray(Person[]::new);
 
 ### Inner class
 
----
-# Volume II 
----
 
-### 
+# Volume II 
+
+### Define a Generic Class
+```java
+public class Pair<T,U>
+{...}
+```
+
+### Generic Methods
 
 
 
