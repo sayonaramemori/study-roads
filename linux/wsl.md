@@ -17,12 +17,18 @@
 > `wsl -d <Distri> -u <User-Name>`  
 
 
+
 ### 连接局域网代理
 ```shell
 # For clash the port is 7890
 export http_proxy="http://[YOUR_WINDOWS_IP]:10809"
 export https_proxy=$http_proxy
 ```
+
+![v2](./img/v2.png)
+
+![clash](./img/clash.png)
+
 
 
 
