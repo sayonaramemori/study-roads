@@ -77,7 +77,7 @@ my lovers:
     Ctrl-T      jump forward
     Ctrl-V      colume visual model, U u
     Ctrl-G
-    gCtrl-G     display 
+    Ctrl-G      display 
     J           del a CR
     ZZ          equal to :wq
     zz          move to mid 

@@ -14,6 +14,7 @@
 > `wsl --export <Distri> <Path-to-store>`
 > `wsl --import <New-Name> <Installation-DIR> <Path-exported-Package>`
 > `wsl --unregister <Distri>`
+> `wsl -d <Distri> -u <User-Name>`
 
 
 ### 扫描局域网ip
