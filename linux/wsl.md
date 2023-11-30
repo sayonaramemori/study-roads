@@ -9,12 +9,12 @@
 
 
 #### some examples
-> `wsl -l -v`
-> `wsl --help`
-> `wsl --export <Distri> <Path-to-store>`
-> `wsl --import <New-Name> <Installation-DIR> <Path-exported-Package>`
-> `wsl --unregister <Distri>`
-> `wsl -d <Distri> -u <User-Name>`
+> `wsl -l -v`  
+> `wsl --help`  
+> `wsl --export <Distri> <Path-to-store>`  
+> `wsl --import <New-Name> <Installation-DIR> <Path-exported-Package>`  
+> `wsl --unregister <Distri>`  
+> `wsl -d <Distri> -u <User-Name>`  
 
 
 ### 连接局域网代理
