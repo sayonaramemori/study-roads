@@ -25,9 +25,11 @@ export http_proxy="http://[YOUR_WINDOWS_IP]:10809"
 export https_proxy=$http_proxy
 ```
 
+### 在代理软件中打开允许局域网连接选项
 ![v2](./img/v2.png)
 
 ![clash](./img/clash.png)
+<img src="./img/clash.png" width=480 height=360>
 
 
 
