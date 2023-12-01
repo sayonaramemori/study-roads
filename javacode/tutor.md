@@ -1,6 +1,4 @@
----
-# Volume I
----
+## Volume I
 
 ## To find the difference from C++
 ### Basic Type
@@ -249,7 +247,7 @@ java com.mycompany.PayrollApp
 |:---|:----|
 |public|Any class|
 |nothing|Package|
-|protected|Field:Package,Method:subclass|
+|protected|Package,subclass|
 |private|Class defining them|
 
 
@@ -559,13 +557,34 @@ Stream<Person> stream = names.stream().map(Person::new);
 Person[] people = stream.toArray(Person[]::new);
 ```
 
-### Processing lambda expression
-
 ### Inner class
+---
+### Anonymous Inner Classes
+> A lambda expression is a better choice.
+> If you want to make only a single object of this class, you don't even need to give the class a name. Such a class is called an anonymous inner class.
+```java
+public void start(int interval, boolean beep)
+{
+    //Create a new object of a class that implements the ActionListener interface, where the required method actionPerformed is the one defined inside the braces{}.
+    var listener = new ActionListener()
+    {
+        public void actionPerformed(Action event)
+        {
+            System.out.println("At the tone, the time is "
+            + Instant.ofEpochMilli(event.getWhen()));
+            if(beep) ToolKit.getDefaultToolkit().beep();
+        }
+    };
+    var timer = new Timer(interval, listener);
+    timer.start();
+}
+//In general the syntax is 
+new SuperType(construction parameters){
+    inner class methods and data
+}
+```
 
----
 # Volume II 
----
 
 
 
