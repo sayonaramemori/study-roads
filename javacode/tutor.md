@@ -558,7 +558,7 @@ Person[] people = stream.toArray(Person[]::new);
 ```
 
 ### Inner class
----
+
 ### Anonymous Inner Classes
 > A lambda expression is a better choice.
 > If you want to make only a single object of this class, you don't even need to give the class a name. Such a class is called an anonymous inner class.
@@ -585,6 +585,18 @@ new SuperType(construction parameters){
 ```
 
 # Volume II 
+=======
+
+
+# Volume II 
+
+### Define a Generic Class
+```java
+public class Pair<T,U>
+{...}
+```
+
+### Generic Methods
 
 
 
