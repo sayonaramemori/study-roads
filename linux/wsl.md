@@ -28,8 +28,7 @@ export https_proxy=$http_proxy
 ### 在代理软件中打开允许局域网连接选项
 ![v2](./img/v2.png)
 
-![clash](./img/clash.png)
-<img src="./img/clash.png" width=480 height=360>
+<p><img src="./img/clash.png" width=400 height=300><img src="./img/v2.png" width=400 height=300></p>
 
 
 
