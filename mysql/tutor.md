@@ -109,7 +109,11 @@ SELECT [FIELD-NAME] FROM [NAME] LIMIT [INDEX],[RECORDS-NUMBER];
 use mysql;
 select * from user;
 create user 'user-name'@'host-name' identified by 'password' [with grant option];
+
+//grant system_user on *.* to 'root';
+//the below instruction may raise error
 alter user 'user-name'@'host-name' identified with mysql_native_password by 'new-password';
+
 drop user'user-name'@'host-name';
 
 //examples
