@@ -17,6 +17,8 @@
 > `wsl -d <Distri> -u <User-Name>`  
 
 
+### 在代理软件中打开允许局域网连接选项
+<p><img src="./img/clash.png" width=400 height=300><img src="./img/v2.png" width=400 height=300></p>
 
 ### 连接局域网代理
 ```shell
@@ -25,9 +27,6 @@ export http_proxy="http://[YOUR_WINDOWS_IP]:10809"
 export https_proxy=$http_proxy
 ```
 
-![v2](./img/v2.png)
-
-![clash](./img/clash.png)
 
 
 
