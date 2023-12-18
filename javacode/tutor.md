@@ -299,7 +299,7 @@ out.println("Hello world");
 |Key word|Scope|
 |:---|:----|
 |public|Any class|
-|protected|Package,subclass|
+|protected|Field in Package,method in subclass|
 |nothing|Package|
 |private|Class defining them|
 
@@ -381,7 +381,7 @@ if(staff[0] instanceof Manager)
 ```
 
 ### Abstract class
-> In C++, there is no special keyword to denote abstract classes.
+> A class with one or more abstract methods must ifself be declared abstract. The same pure virtual function in C++.
 ```
 public abstract class Person
 {
@@ -395,12 +395,17 @@ public abstract class Person
         return name;
     }
 }
-//Abstract classes cannot be instantiated.But you can refer to a subclass which is the same as C++. For example,
+//Abstract classes cannot be instantiated. But you can refer to a subclass which is the same as C++. For example,
 Person p = new Student(..);
 ```
 
 ### Object: The Cosmic Superclass
 > In C++, there is no cosmic root class. However, every pointer can be convert to a void* pointer.
+```java
+Class getClass();
+boolean equals(Object);
+String toString();
+```
 
 #### The equals Method
 > The same as operator== in C++.  
@@ -464,7 +469,6 @@ staff.get(int index);
 ### Object Wrappers and Autoboxing
 
 
-
 ### Reflection
 
 
@@ -473,6 +477,7 @@ staff.get(int index);
 > All methods of an interface are automatically `public`. For that reason, it is not necessary to supply the keyword `public` when declaring a method in an interface and field is always `public static final`.
 > You can think of an interface as an abstract class with no instance fields.
 > You can never use the new operator to instantiate an interface. However, you can declare interface variables refering to an object of a class that implements the interface;
+> A class can only extend a single class. But it can implment multiple interface.
 
 ```java
 public interface Comparable
@@ -480,6 +485,7 @@ public interface Comparable
     int compareTo(Object other);        //public
     double pi = 3.14156;                //public static final
 }
+
 if(anObj instanceof Comparable){...}
 
 //mix the two interface
@@ -487,12 +493,19 @@ public interface UniverseComp extends Comparable
 {
     ...
 }
+
 //multiple implements
 class Employee implements Cloneable, Comparable
 {
     ...
 }
-//add static methods to interface
+
+class Employee extends Person implements Comparable
+{
+    ...
+}
+
+//add static methods to interface. It simply seemed to be against the spirit of interfaces as abstract specifications.
 public interface Path
 {
     public static Path of(URL url){....}
@@ -549,6 +562,7 @@ class Employee implements Cloneable
 > The return type is auto deduced. It is illegal to return a value in some branches but not in others.
 > It only captures the unchanged variable.
 > The point of using lambdas is *deferred* execution.
+> You can supply a lambda expression whenever an object of an interface with a single abstract method is expected. Such an interface is called *functional interface*
 ```java
 //example
 (String first, String second)
@@ -606,8 +620,58 @@ new SuperType(construction parameters){
 }
 ```
 
-# Volume II 
-=======
+### Exception
+> Exception hierarchy in Java
+```java
+            Throwable
+        -------|--------
+        |              |
+      Error         Exception
+                       |
+                -------|-------
+                |             |
+            IOException   RutimeException
+
+class MyAnimation
+{
+    public Image loadImage(String s) throws FileNotFoundException, EOFException
+    {
+        ...
+    }
+}
+```
+
+### Catch an Exception
+```java
+try{
+    ...
+}
+catch(ExceptionType1 e){
+    //handle it 
+}
+catch(ExceptionType2 e){
+    //handle it 
+}
+finally{
+    //The code int the finally clause executes whether or not an exception was caught.
+    //The remaining code in the try block is skipped. Then, the code in the finally clause is executed.
+}
+```
+
+### Assertion
+> The assertion mechanism allows you to put in checks during testing and have them automatically removed in the production code.  
+```java
+//test x > 0;
+assert x > 0;
+//Or you can pass the actual value of x into the AssertionError object, so that it gets displayed later.
+assert x>0 : x;
+//By default, asserioins are disabled. Enable them by running the program with -enableassertions or -ea opiton:
+java -enableassertions MyApp;
+
+```
+
+### Logging
+> log4j2
 
 
 # Volume II 
@@ -619,7 +683,35 @@ public class Pair<T,U>
 ```
 
 ### Generic Methods
+> Note that the type variables are inserted after the modifiers ( such as public static ) and before the return type.
+```java
+//you can define generic methods both inside ordinary classes and inside generic classes.
+class ArrayAlg
+{
+    public static <T> T getMiddle(T... a)
+    {
+        return a[a.length/2];
+    }
+}
+//When you call a generic method:
+String middle = ArrayAlg.<String>getMiddle("john","Q.","public");
+//In this case, you can omit the <String> parameter, because the compiler has enough information to infer.
+```
 
+### Bounds for Type variables (Restrictions on type variables)
+```java
+//you can have as many interface supertypes as you like, but at most one of the bounds can be a class. If you have a class as a bound, it must be the first one in the bounds list.
+public static <T extends Comparable & Serializable> T min(T[] a)...
+```
 
+### Type Erasure
+> The type variables are erased and replaced by their bounding types( or Object for variables without bounds).
+> The raw type replaces type variables with the first bound, or Object if no bounds are given.
+```java
+public static <T extends Comparable> T min(T[] a);
+//After erasure
+public static Comparable min(Comparable[] a);
+
+```
 
 
