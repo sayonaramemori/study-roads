@@ -15,9 +15,27 @@
 |char|char|
 |bool|boolean|
 
+### Conversion between Numeric Types  
+```java
+                          char
+                           |
+                           V
+byte --> shot --> int -->  long
+                   |  \   / |
+                   |    X   | 
+                   |  V   V |
+                   V        V
+                 float --> double
+//using (Type) to cast
+double x = 9.997;
+inx nx = (int) x;
+```
+
+### Boolean
+> You cannot cast between *boolean* values and any numeric type.
+
 ```java
 //In C++,this is ok to compile, but not in java.
-//integer experssion x=0 cannot be converted to a boolean value
 if(x=0){...}
 ```
 
@@ -63,6 +81,11 @@ Size s = Size.medium;
 > The && and || operators are evaluated in short circuit fasion. The same as C++.
 ---
 
+### File Input and Output
+```Java
+Scanner in = new Scanner(Path.of("myfile.txt"), StandardCharsets.UTF_8);
+```
+
 ### Comma operator
 ---
 > Unlike C++, Java does not have a comma operator.
@@ -94,16 +117,17 @@ public static void main(String[] args){
 
 ### Operator Overload
 ---
-> Unlike C++, Java has no programmable operator overloading.
+> Unlike C++, Java has no programmable operator overloading. Except the operator +, += for String.
 ---
 
 ### Auto deduce
 ---
-> var is the same as auto keyword in C++  
+> As of Java 10, var is the same as auto keyword in C++  
 > Note that the `var` keywork can only be used with *local* variables inside methods.
 ---
 
 ### toString Funtion
+> A function defined in Object, you can override it.
 ---
 > define a method for a class with the name toString is the same as overloading << in C++.
 ---
@@ -136,10 +160,11 @@ int a[] = Arrays.copyOf(another,another.length);
 
 ### java.util.Arrays
 ```
-toString(Type[]);
-void sort(Type[]);
-equals(a,b);
-Type[] copyOfRange(Type[],int start,int end);
+static String toString(Type[]);
+static void sort(Type[]);
+static boolean equals(a,b);
+static Type[] copyOfRange(Type[],int start,int end);
+static xxx[] copyOf(xxx[] a, int end) //end is a new length, permiting outrange.
 ```
 
 ### Command-Line Parameters
@@ -219,7 +244,7 @@ static
 
 ### Final on object
 ---
-> The same as the top const in C++.
+> The same as the top const in C++, merely meaning that the object reference stored in the variable will never again refer to a different object.
 ---
 
 ### Method Parameters
@@ -242,16 +267,8 @@ javac com/mycompany/PayrollApp.java
 java com.mycompany.PayrollApp
 ```
 
-#### Package Access  
-|Key word|Scope|
-|:---|:----|
-|public|Any class|
-|nothing|Package|
-|protected|Package,subclass|
-|private|Class defining them|
-
-
 #### Class Importation
+> Import classes
 ```java
 java.time.LocalDate today = java.time.LocalDate.now();
 import java.time.*;
@@ -278,17 +295,22 @@ import static java.lang.System.*;
 out.println("Hello world");
 ```
 
----
+#### Package Access  
+|Key word|Scope|
+|:---|:----|
+|public|Any class|
+|protected|Package,subclass|
+|nothing|Package|
+|private|Class defining them|
+
+
 #### jar
----
 ```
 java -classpath $path1:.:$path2 myprog
 set CLASSPATH=...:.:...
 ```
 
----
 ### Comments for documents
----
 
 
 

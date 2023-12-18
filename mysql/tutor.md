@@ -25,7 +25,7 @@ USE [NAME];
 ```
 SHOW TABLES;
 //创建表
-CREATE TABLE [NAME])(
+CREATE TABLE [NAME](
     key type comment 'content',
     ....
     )comment 'content';
