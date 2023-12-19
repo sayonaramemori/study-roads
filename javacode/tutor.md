@@ -714,4 +714,76 @@ public static Comparable min(Comparable[] a);
 
 ```
 
+## The Java Collection Framework
+> Separating Collection Interfaces and Implementation
+```java
+Queue<Customer> experssLane = new CircularArrayQueue<>(100);
+//or another implementation with the same Interface
+Queue<Customer> expressLane = new LinkedListQueue<>();
+```
+
+### The Collection Interface
+> The fundamental interface for collection classes in the java library is the Collection interface. 
+```java
+//The interface has two fundamental methods:
+public interface Collection<E>
+{
+    boolean add(E element);
+    Iterator<E> iterator();
+}
+```
+
+### Iterators
+```java
+//The Iterator interface has four methods
+public interface Iterator<E>
+{
+    E next();
+    boolean hasNext();
+    void remove();
+    default void forEachRemaining(Consumer<? super E> action);
+}
+//The "for each" loop works with any object that implements the Iterable interface, an interface with a single abstract method.
+public interface Iterable<E>
+{
+    Iterator<E> iterator();
+}
+iterator.forEachingRemaining(ele -> do something);
+```
+
+
+### Classes in the collections framework
+```java
+                            Abstract Collection
+                                    |
+                                    |
+     -------------------------------|----------------------------------------------
+     |                              |                          |                  |
+ AbstractList -----             AbstractSet              AbstractQueue            |
+     |            |                 |                          |                  |
+     |            |       -----------------------              |                  |
+  Abstract        |       |         |           |              |                  |
+SequentialList    |     EnumSet   HashSet    TreeSet     PriorityQueue       ArrayQueue
+     |            |                 |
+     |            |                 |
+ LinkedList    ArrayList      LinkedHashSet
+                                    
+                                    AbstractMap
+                                        |
+    ------------------------------------------------------------------------------
+    |               |                   |                   |                    |
+  HashMap        TreeMap             EnumMap            WeakHashMap          IdentityHashMap
+    |
+LinkedHashMap
+```
+
+
+
+
+
+
+
+
+
+
 
