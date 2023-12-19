@@ -54,6 +54,7 @@ parseInt(variable);
 parseFloat(variable);
 ```
 ---
+
 #### const  
 > The same as top const in C++ on object
 ```Javascript
@@ -62,7 +63,6 @@ const varible_name = initial_value;
 ```
 
 #### Compare Operator
-
 ```javascript
 //false
 console.log(NaN === NaN);
@@ -98,7 +98,7 @@ let var_array = [...];
 5. FirstValue shift()     //remove the first el
 6. void splice(begin,number) //remove n at begin, if number is not specified, remove all after begin
 
-// Member
+// Field
 2. length
 ```
 
@@ -110,6 +110,7 @@ function func_name(args=default_value ...){
 }
 //call
 func_name(args...);
+
 //anonymous function, call after assginment
 let fn = function(){}
 
@@ -127,6 +128,7 @@ let obj = {
 //add and access field
 obj['new-field'] = new-value;
 obj.field = new-value;
+
 //delete field
 delete obj.field;
 
@@ -145,7 +147,7 @@ for(let key in obj){
 ## Web API
 
 ### Get DOM object
-> jkjkjkjkjk
+>
 
 
 

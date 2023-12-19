@@ -296,10 +296,11 @@ out.println("Hello world");
 ```
 
 #### Package Access  
+> protected is not safe, never use it.
+
 |Key word|Scope|
 |:---|:----|
 |public|Any class|
-|protected|Field in Package,method in subclass|
 |nothing|Package|
 |private|Class defining them|
 
@@ -474,9 +475,13 @@ staff.get(int index);
 
 ### Interface
 > An interface is not a class but a set of requirements for the classes that want to comform to the interface.  
+
 > All methods of an interface are automatically `public`. For that reason, it is not necessary to supply the keyword `public` when declaring a method in an interface and field is always `public static final`.
+
 > You can think of an interface as an abstract class with no instance fields.
+
 > You can never use the new operator to instantiate an interface. However, you can declare interface variables refering to an object of a class that implements the interface;
+
 > A class can only extend a single class. But it can implment multiple interface.
 
 ```java
@@ -513,7 +518,7 @@ public interface Path
 ```
 
 #### Default methods for interface
-> You can never make a default method that redefines one of the methods in the `Object` class.
+> You can never make a default method that redefines one of the methods in the `Object` class.  
 > what happens if the exact same method is defined as default method in one interface and then again as a method of a superclass or another interface?  
 
 1. Superclasses win. If a superclass provides a concrete method, default methods with the same name and parameters types are simply ingnored.
