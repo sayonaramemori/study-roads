@@ -38,3 +38,34 @@ for(let key in myobj){
     console.log(key);
     console.log(myobj[key]);
 }
+
+let div = document.querySelectorAll('div');
+console.dir(div);
+
+for(let i=0;i<div.length;++i){
+    div[i].style.color = 'red';
+}
+
+const btn = document.querySelector('.btn');
+let i = 10;
+
+let timer = setInterval(function(){
+    btn.innerHTML = "agree(" + --i +"s)";
+    if(i===0){
+        btn.disabled = false;
+        clearInterval(timer);
+        btn.innerHTML = "agree";
+    }
+},1000);
+
+
+
+
+
+
+
+
+
+
+
+

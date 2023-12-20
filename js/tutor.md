@@ -98,13 +98,21 @@ let var_array = [...];
 5. FirstValue shift()     //remove the first el
 6. void splice(begin,number) //remove n at begin, if number is not specified, remove all after begin
 
+7. array map(fn(ele,index){
+    //every element changed
+    return ele + 'color';
+});
+
+8. string join(separator='');
+9. void forEach(func(ele,index))
+
 // Field
 2. length
 ```
 
 
 #### Function
-```java
+```javascript
 function func_name(args=default_value ...){
     ...
 }
@@ -146,20 +154,190 @@ for(let key in obj){
 
 ## Web API
 
-### Get DOM object
->
+### Get DOM object by css selector
+> document.method and return an object  
+
+|method|explain|  
+|:---|:----|
+|querySelector(selector)|Get the first element matched|
+|querySelectorAll(selector)|Get all elements mathed, return an fake array, read only|  
+
+
+### classList
+```javascript
+const div = document.querySelector('div');
+div.classList.add('active');
+div.classList.remove('active');
+
+//if not exists, then add, or remove
+div.classList.toggle('active');
+```
+
+### SetTimeEvent
+```javascript
+let timer = setInterval(fn,1000);
+clearInterval(timer);
+//可以不清除
+let timeout = setTimeout(fn,1000);
+
+```
+
+### EventListener
+> obj.addEventListener('event-type',func);   
+> bind freely, no covering  
+> use obj.removeEventListener('type',func-name), but anonymous func cann't be removed.
+
+|Event|explain|
+|:---|:---|
+|click||
+|mouseenter||
+|mouseleave||
+|focus|表单获得焦点|
+|blur|表单失去标点|
+|keydown||
+|keyup||
+|input|用户输入|
+|load|资源已加载|
+|DOMContentLoaded|HTML文档已加载|
+|scroll||
+|submit|表单提交事件|
+
+```javascript
+    box.addEventListener('click',function(){
+        box.style.display = 'none';
+    });
+```
+
+### Event Object & this
+```javascript
+obj.addEventListener('click',function(e){
+    console.log(e);
+    //this point to obj which is caller
+    console.log(this);
+    //prevent event bubble
+    e.stopPropagation();
+    //prevent default behaviour
+    e.preventDefault();
+});
+```
+
+### DOM Node
+> result the same as querySelector
+```javascript
+let = obj.parentNode.parentNode...;
+obj.previousElementSibling;
+obj.nextElementSibling;
+obj.children;  //the all 
+
+//create node
+const node = document.createElement('tag');
+
+//add node
+fatherNode.appendChild(node);
+fatherNode.insertBefore(node,target-before-node);
+
+//copy node, if bool is true copy the children together
+const obj = node.cloneNode(bool=false)
+
+//delete node by father
+fatherNode.removeChild(node);
+
+```
+
+### BOM
+```
+                        window
+                          |
+  ------------------------------------------
+  |         |         |          |         |
+navigator location  document   history   screen
+```
 
 
 
+### Test mobile
+```javascript
+(function(){
+    const userAgent = navigator.userAgent;
+    const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/);
+    const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/);
+    if (android || iphone)
+        location.href =  'http://m.itcast.cn';
+})();
+```
 
 
 
+### lambda 
+> this in lambda point to fathere of caller
+```javascript
+const fn = x =>{};
+const f = (x,y) => {};
+const simple = x => console.log(x);
+const ff = x=> x+x;
+
+//return an object
+const obj = (name) => ({username:name});
+```
 
 
+### Array destruct
+> Quickly assgin to variables
+```javascript
+const arr = [1,2,3];
+const [a,b,c] = arr;
+console.log(a);
+console.log(b);
+console.log(c);
+```
+
+### Object destruct
+```javascript
+const {a,b} = {a:'hh',b:'gg'};
+//use new_var_name to receive hh
+const {a: new_var_name,b} = {a:'hh',b:'gg'};
+
+//multiple level destruct
+const pig = {
+    name: "peiqi",
+    family:{
+        mother: "pig ma",
+        father: "pig pa"
+    },
+    age: 6
+}
+const {name, family: {mother,father}} = pig;
+```
 
 
+### Object Constructor
+```javascript
+function Pig(name,age,gender){
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+}
+
+//save memory
+Pig.prototype.func = function(){
+//this point to instantiation
+    }
 
 
+const peppa = new Pig('pig',1,'male');
+
+//static field
+Pig.eye = 2;
+//static method
+Pig.sayHi = ()=>console.log('hi');
+```
+
+### Object static method
+```javascript
+array keys(target_obj);
+array values(target_obj);
+void assign(dest,source_obj);
+```
 
 
 

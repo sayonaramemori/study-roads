@@ -3,8 +3,31 @@
     <head>
         <meta charset="utf-8">
         <title>Jstest</title>
+    <script>
+        (function(){
+    const userAgent = navigator.userAgent;
+    const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/);
+    const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/);
+    if (android || iphone)
+        location.href =  'http://m.itcast.cn';
+        })();
+    </script>
     </head>
     <body>
+        <input type="text">
+        <div>
+            <h3>let</h3>
+            <p>java</p>
+        </div>
+        <div>
+            test
+        </div>
+        <textarea>
+            User Agreement
+        </textarea>
+        <br>
+        <button class="btn" disabled>agree</button>
+
     <script src="./myjs.js"></script>
     </body>
 </html>
