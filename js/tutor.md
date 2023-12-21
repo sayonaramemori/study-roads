@@ -321,7 +321,7 @@ function Pig(name,age,gender){
 //save memory
 Pig.prototype.func = function(){
 //this point to instantiation
-    }
+}
 
 
 const peppa = new Pig('pig',1,'male');
