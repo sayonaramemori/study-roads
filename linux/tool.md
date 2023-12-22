@@ -76,3 +76,23 @@ exec 3>&-
 '''prevent output
 ls -al > /dev/null
 ```
+
+### Set static IP for Ubuntu
+```shell
+cd /etc/netplan
+sudo vim 01-network-manager-all.yaml
+'''Write below to the file
+'''Gateway is your router ip
+'''Specify eth-n, use ifconfig to check which to select.
+'''To remove, simply delete the item ethernets.
+network:
+    version: 2
+    renderer: NetworkManager
+    ethernets:
+        eth3:
+            dhcp4: no
+            addresses: [192.168.31.66/24]
+            gateway4: 192.168.31.1
+            nameservers:
+                addresses: [223.5.5.5,114.114.114.114]
+```
