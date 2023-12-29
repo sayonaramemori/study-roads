@@ -3,7 +3,7 @@ create table myfirst(
     id int primary key auto_increment,
     mg double not null,
     Qg double check (Qg>0),
-    ml double,
+    ml double, 
     Ql double,
     Re double,
     Eg double

@@ -98,6 +98,7 @@ let var_array = [...];
 5. FirstValue shift()     //remove the first el
 6. void splice(begin,number) //remove n at begin, if number is not specified, remove all after begin
 
+
 7. array map(fn(ele,index){
     //every element changed
     return ele + 'color';
@@ -105,6 +106,7 @@ let var_array = [...];
 
 8. string join(separator='');
 9. void forEach(func(ele,index))
+10. operator[index]      //you can specify index out of range and assign to it, blank position will be empty;
 
 // Field
 2. length
