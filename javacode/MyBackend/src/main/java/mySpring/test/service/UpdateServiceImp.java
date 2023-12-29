@@ -16,6 +16,7 @@ public class UpdateServiceImp implements UpdateService{
     @Override
     public void updateSp(Double val){
         rm.updateSp(val);
+        rm.updateSpLog(val);
     }
 
 }

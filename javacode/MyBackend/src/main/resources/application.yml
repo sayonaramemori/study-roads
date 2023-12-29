@@ -4,7 +4,7 @@ server:
 spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/kepserver        
+        url: jdbc:mysql://localhost:3306/kepserver
         username: sayonara
         password: Iloveyouxuwu@121234
 

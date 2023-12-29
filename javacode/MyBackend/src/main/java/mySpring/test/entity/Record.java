@@ -5,22 +5,15 @@ import java.time.LocalDateTime;
 public class Record
 {
     private Integer id;
-    private Double sp;
-    private LocalDateTime time;
+    private Double temperature;
+    private LocalDateTime insertTime;
 
     public Record(){}
 
     public Record(Integer id, Double sp, LocalDateTime time){
         this.id = id;
-        this.sp = sp;
-        this.time = time;
-    }
-
-    public String toString(){
-        String res = "id " + this.id +"\n";
-        res += "sp " + this.sp +"\n";
-        res += "time " + this.time + "\n";
-        return res;
+        this.temperature = sp;
+        this.insertTime = time;
     }
 
     public Integer getId(){
@@ -31,20 +24,20 @@ public class Record
         this.id = Id;
     }
 
-    public Double getSp(){
-        return this.sp;
+    public Double getTemperature(){
+        return this.temperature;
     }
 
-    public void setSp(Double sp){
-        this.sp = sp;
+    public void setTemperature(Double sp){
+        this.temperature = sp;
     }
 
-    public LocalDateTime getTime(){
-        return this.time;
+    public LocalDateTime getInsertTime(){
+        return this.insertTime;
     }
 
-    public void setTime(LocalDateTime time){
-        this.time = time;
+    public void setInsertTime(LocalDateTime time){
+        this.insertTime = time;
     }
 }
 
