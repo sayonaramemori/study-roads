@@ -96,3 +96,14 @@ network:
             nameservers:
                 addresses: [223.5.5.5,114.114.114.114]
 ```
+
+### chmod with find
+```shell
+# for directory
+find [PATH] -type d -exec chmod 755 {} \;
+find [PATH] -type d | xargs chmod 755
+
+# for file
+find [PATH] -type f -exec chmod 666 {} \;
+find [PATH] -type f | xargs chmod 666 
+```
