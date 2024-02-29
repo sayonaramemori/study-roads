@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -13,3 +14,20 @@
     insert into TemperatureRecord (temperature,insert_time,quality) values(#{temperature},#{insert_time},#{quality});
   </insert> 
 </mapper>
+=======
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="opcua.mybatis.mapper.RecordMapper">
+  <select id="selectLast" resultType="DataRecord">
+    select * from TemperatureRecord order by id desc limit 5;
+  </select>
+  <select id="selectById" resultType="DataRecord">
+    select * from TemperatureRecord where id = #{ID};
+  </select>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    insert into TemperatureRecord (temperature,insert_time,quality) values(#{temperature},#{insert_time},#{quality});
+  </insert> 
+</mapper>
+>>>>>>> 9635c473ca24ad51e6da34a1359f80e1e58d40a7

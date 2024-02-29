@@ -20,7 +20,7 @@
                           char
                            |
                            V
-byte --> shot --> int -->  long
+byte --> short --> int -->  long
                    |  \   / |
                    |    X   | 
                    |  V   V |
